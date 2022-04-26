@@ -22,85 +22,42 @@ public class SingleNoteParticle extends AbstractSingleParticle implements Colora
     // TODO: try to clean up this implementation
     @Override
     public void setColor(Color color) {
-        float hue;
-        float saturation;
+        int r = color.getRed();
+        int g = color.getGreen();
+        int b = color.getBlue();
 
-        int R = color.getRed();
-        int G = color.getGreen();
-        int B = color.getBlue();
-
-        float maxChannel = (float) max(R, G, B);
-        float minChannel = (float) min(R, G, B);
+        float maxChannel = (float) max(r, g, b);
+        float minChannel = (float) min(r, g, b);
 
         if (maxChannel == minChannel) {
-            // TODO:
             this.hue = 33000;
-            return;
-        }
-
-        if (maxChannel != 0f) {
-            saturation = (maxChannel - minChannel) / maxChannel;
         } else {
-            saturation = 0f;
-        }
-        float redChannel = (maxChannel - R) / (maxChannel - minChannel);
-        float greenChannel = (maxChannel - G) / (maxChannel - minChannel);
-        float blueChannel = (maxChannel - B) / (maxChannel - minChannel);
-        if (R == maxChannel) {
-            hue = blueChannel - greenChannel;
-        } else if (G == maxChannel) {
-            hue = 2.0f + redChannel - blueChannel;
-        } else {
-            hue = 4.0f + greenChannel - redChannel;
-        }
-        hue = hue / 6.0f;
-        if (hue < 0) {
-            hue = hue + 1.0f;
-        }
-        this.hue = -hue + 0.25f;
-        if (saturation == 1.0f && maxChannel == 255f) {
-            this.color = color;
-            return;
+            float redChannel = (maxChannel - r) / (maxChannel - minChannel);
+            float greenChannel = (maxChannel - g) / (maxChannel - minChannel);
+            float blueChannel = (maxChannel - b) / (maxChannel - minChannel);
+
+            float hue;
+            if (r == maxChannel) {
+                hue = blueChannel - greenChannel;
+            } else if (g == maxChannel) {
+                hue = 2.0f + redChannel - blueChannel;
+            } else {
+                hue = 4.0f + greenChannel - redChannel;
+            }
+            hue = hue / 6.0f;
+            if (hue < 0) {
+                hue = hue + 1.0f;
+            }
+            this.hue = -hue + 0.25f;
         }
 
-        float h = (hue - (float) Math.floor(hue)) * 6.0f;
-        float f = h - (float) Math.floor(h);
-        float q = 1.0f - f;
-        float t = 1.0f - (1.0f - f);
-        switch ((int) h) {
-            case 0 -> {
-                R = 255;
-                G = (int) (t * 255.0f + 0.5f);
-                B = 0;
-            }
-            case 1 -> {
-                R = (int) (q * 255.0f + 0.5f);
-                G = 255;
-                B = 0;
-            }
-            case 2 -> {
-                R = 0;
-                G = 255;
-                B = (int) (t * 255.0f + 0.5f);
-            }
-            case 3 -> {
-                R = 0;
-                G = (int) (q * 255.0f + 0.5f);
-                B = 255;
-            }
-            case 4 -> {
-                R = (int) (t * 255.0f + 0.5f);
-                G = 0;
-                B = 255;
-            }
-            case 5 -> {
-                R = 255;
-                G = 0;
-                B = (int) (q * 255.0f + 0.5f);
-            }
-        }
+        // Get client interp
+        float magic = (float) (Math.PI * 2F);
+        int red = (int) Math.max(0.0F, Math.sin((this.hue * magic)) * 0.65F + 0.35F) * 255;
+        int green = (int) Math.max(0.0F, Math.sin((this.hue + 0.33333334F) * magic) * 0.65F + 0.35F) * 255;
+        int blue = (int) Math.max(0.0F, Math.sin((this.hue + 0.6666667F) * magic) * 0.65F + 0.35F) * 255;
 
-        this.color = Color.fromBGR((R << 16) | (G << 8) | B);
+        this.color = Color.fromRGB(red, green, blue);
     }
 
     @Override
