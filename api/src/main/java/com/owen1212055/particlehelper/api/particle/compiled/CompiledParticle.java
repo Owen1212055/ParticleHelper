@@ -1,7 +1,7 @@
 package com.owen1212055.particlehelper.api.particle.compiled;
 
-import org.bukkit.*;
-import org.bukkit.entity.*;
+import org.bukkit.Location;
+import org.bukkit.entity.Player;
 
 public interface CompiledParticle {
 

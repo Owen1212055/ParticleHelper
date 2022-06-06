@@ -1,9 +1,11 @@
 package com.owen1212055.particlehelper.api.particle.types.dust.transition;
 
-import com.owen1212055.particlehelper.api.particle.compiled.*;
-import com.owen1212055.particlehelper.api.particle.types.dust.*;
-import com.owen1212055.particlehelper.api.type.*;
-import org.bukkit.*;
+import com.owen1212055.particlehelper.api.particle.compiled.CompiledParticle;
+import com.owen1212055.particlehelper.api.particle.compiled.SimpleCompiledParticle;
+import com.owen1212055.particlehelper.api.particle.types.dust.SingleDustParticle;
+import com.owen1212055.particlehelper.api.type.ParticleType;
+import org.bukkit.Color;
+import org.bukkit.Particle;
 
 public class SingleDustTransitionParticle extends SingleDustParticle implements TransitionDustParticle {
 

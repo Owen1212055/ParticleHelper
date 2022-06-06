@@ -1,18 +1,44 @@
 package com.owen1212055.particlehelper.api.particle.types.note;
 
-import com.owen1212055.particlehelper.api.particle.compiled.*;
-import com.owen1212055.particlehelper.api.particle.types.*;
-import com.owen1212055.particlehelper.api.type.*;
-import org.bukkit.*;
+import com.owen1212055.particlehelper.api.particle.compiled.CompiledParticle;
+import com.owen1212055.particlehelper.api.particle.compiled.SimpleCompiledParticle;
+import com.owen1212055.particlehelper.api.particle.types.AbstractSingleParticle;
+import com.owen1212055.particlehelper.api.particle.types.ColorableParticle;
+import com.owen1212055.particlehelper.api.type.ParticleType;
+import org.bukkit.Color;
 
 public class SingleNoteParticle extends AbstractSingleParticle implements ColorableParticle {
+
+    private Color color;
+    private float hue;
 
     public SingleNoteParticle(ParticleType<?, ?> particleType) {
         super(particleType);
     }
 
-    private Color color;
-    private float hue;
+    private static double max(double... numbers) {
+        double max = numbers[0];
+
+        for (double number : numbers) {
+            if (number > max) {
+                max = number;
+            }
+        }
+
+        return max;
+    }
+
+    private static double min(double... numbers) {
+        double min = numbers[0];
+
+        for (double number : numbers) {
+            if (number < min) {
+                min = number;
+            }
+        }
+
+        return min;
+    }
 
     @Override
     public Color getColor() {
@@ -67,30 +93,6 @@ public class SingleNoteParticle extends AbstractSingleParticle implements Colora
         simpleCompiledParticle.speed = 1; // Keep speed constant
 
         return simpleCompiledParticle.compileSender();
-    }
-
-    private static double max(double... numbers) {
-        double max = numbers[0];
-
-        for (double number : numbers) {
-            if (number > max) {
-                max = number;
-            }
-        }
-
-        return max;
-    }
-
-    private static double min(double... numbers) {
-        double min = numbers[0];
-
-        for (double number : numbers) {
-            if (number < min) {
-                min = number;
-            }
-        }
-
-        return min;
     }
 
 }

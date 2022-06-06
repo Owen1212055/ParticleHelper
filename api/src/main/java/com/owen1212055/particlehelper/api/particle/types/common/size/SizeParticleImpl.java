@@ -1,16 +1,18 @@
 package com.owen1212055.particlehelper.api.particle.types.common.size;
 
-import com.owen1212055.particlehelper.api.particle.compiled.*;
-import com.owen1212055.particlehelper.api.particle.types.*;
-import com.owen1212055.particlehelper.api.type.*;
+import com.owen1212055.particlehelper.api.particle.compiled.CompiledParticle;
+import com.owen1212055.particlehelper.api.particle.compiled.SimpleCompiledParticle;
+import com.owen1212055.particlehelper.api.particle.types.AbstractSingleParticle;
+import com.owen1212055.particlehelper.api.particle.types.SizeableParticle;
+import com.owen1212055.particlehelper.api.type.ParticleType;
 
 public class SizeParticleImpl extends AbstractSingleParticle implements SizeableParticle {
+
+    private float size;
 
     public SizeParticleImpl(ParticleType<?, ?> particleType) {
         super(particleType);
     }
-
-    private float size;
 
     @Override
     public float getSize() {

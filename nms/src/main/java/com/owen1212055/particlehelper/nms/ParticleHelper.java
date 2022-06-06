@@ -1,15 +1,15 @@
 package com.owen1212055.particlehelper.nms;
 
-import com.owen1212055.particlehelper.api.particle.compiled.*;
+import com.owen1212055.particlehelper.api.particle.compiled.SimpleCompiledParticle;
 import com.owen1212055.particlehelper.api.type.ParticleType;
-import net.minecraft.core.particles.*;
-import net.minecraft.network.protocol.game.*;
-import org.bukkit.*;
-import org.bukkit.craftbukkit.v1_18_R2.*;
-import org.bukkit.craftbukkit.v1_18_R2.entity.*;
-import org.bukkit.entity.*;
+import net.minecraft.core.particles.ParticleOptions;
+import net.minecraft.network.protocol.game.ClientboundLevelParticlesPacket;
+import org.bukkit.Location;
+import org.bukkit.craftbukkit.v1_18_R2.CraftParticle;
+import org.bukkit.craftbukkit.v1_18_R2.entity.CraftPlayer;
+import org.bukkit.entity.Player;
 
-import java.util.function.*;
+import java.util.function.BiConsumer;
 
 import static com.owen1212055.particlehelper.api.type.Particles.*;
 

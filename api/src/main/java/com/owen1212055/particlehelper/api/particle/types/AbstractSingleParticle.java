@@ -1,7 +1,7 @@
 package com.owen1212055.particlehelper.api.particle.types;
 
-import com.owen1212055.particlehelper.api.particle.*;
-import com.owen1212055.particlehelper.api.type.*;
+import com.owen1212055.particlehelper.api.particle.Particle;
+import com.owen1212055.particlehelper.api.type.ParticleType;
 
 public abstract class AbstractSingleParticle implements Particle {
 

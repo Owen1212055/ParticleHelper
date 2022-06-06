@@ -1,7 +1,7 @@
 package com.owen1212055.particlehelper.api.particle.types;
 
-import com.owen1212055.particlehelper.api.particle.*;
-import com.owen1212055.particlehelper.api.type.*;
+import com.owen1212055.particlehelper.api.particle.MultiParticle;
+import com.owen1212055.particlehelper.api.type.ParticleType;
 
 public abstract class AbstractMultiParticle implements MultiParticle {
 
@@ -39,23 +39,23 @@ public abstract class AbstractMultiParticle implements MultiParticle {
     }
 
     @Override
-    public void setYOffset(float offset) {
-        this.yOffset = offset;
-    }
-
-    @Override
     public float getYOffset() {
         return this.yOffset;
     }
 
     @Override
-    public void setZOffset(float zOffset) {
-        this.zOffset = zOffset;
+    public void setYOffset(float offset) {
+        this.yOffset = offset;
     }
 
     @Override
     public float getZOffset() {
         return this.zOffset;
+    }
+
+    @Override
+    public void setZOffset(float zOffset) {
+        this.zOffset = zOffset;
     }
 
     @Override

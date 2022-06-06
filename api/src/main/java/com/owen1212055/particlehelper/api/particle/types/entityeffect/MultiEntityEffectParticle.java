@@ -1,8 +1,9 @@
 package com.owen1212055.particlehelper.api.particle.types.entityeffect;
 
-import com.owen1212055.particlehelper.api.particle.compiled.*;
-import com.owen1212055.particlehelper.api.particle.types.*;
-import com.owen1212055.particlehelper.api.type.*;
+import com.owen1212055.particlehelper.api.particle.compiled.CompiledParticle;
+import com.owen1212055.particlehelper.api.particle.compiled.SimpleCompiledParticle;
+import com.owen1212055.particlehelper.api.particle.types.AbstractMultiParticle;
+import com.owen1212055.particlehelper.api.type.ParticleType;
 
 public class MultiEntityEffectParticle extends AbstractMultiParticle {
 

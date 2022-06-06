@@ -1,19 +1,22 @@
 package com.owen1212055.particlehelper.api.particle.compiled;
 
-import com.owen1212055.particlehelper.api.*;
+import com.owen1212055.particlehelper.api.ParticleChannel;
+import com.owen1212055.particlehelper.api.particle.MultiParticle;
 import com.owen1212055.particlehelper.api.particle.Particle;
-import com.owen1212055.particlehelper.api.particle.*;
-import com.owen1212055.particlehelper.api.particle.types.*;
-import com.owen1212055.particlehelper.api.type.*;
-import org.bukkit.*;
-import org.bukkit.entity.*;
+import com.owen1212055.particlehelper.api.particle.types.AbstractSingleParticle;
+import com.owen1212055.particlehelper.api.type.ParticleType;
+import org.bukkit.Bukkit;
+import org.bukkit.Location;
+import org.bukkit.entity.Player;
 
-import java.lang.invoke.*;
-import java.util.function.*;
+import java.lang.invoke.MethodHandle;
+import java.lang.invoke.MethodHandles;
+import java.lang.invoke.MethodType;
+import java.util.function.BiConsumer;
 
 public class SimpleCompiledParticle implements CompiledParticle {
 
-    private static NmsSenderSupplier SENDER_SUPPLIER = null;
+    private static ParticleChannel SENDER_SUPPLIER = null;
 
     public ParticleType<?, ?> particle;
 
@@ -46,6 +49,38 @@ public class SimpleCompiledParticle implements CompiledParticle {
         this.longDistance = particle.shouldForceSend();
     }
 
+    // Attempt to bind if this is shaded into a jar for example
+    public static void forceBind() {
+        if (SENDER_SUPPLIER == null) {
+            return;
+        }
+
+        try {
+            MethodType type = MethodType.methodType(BiConsumer.class, SimpleCompiledParticle.class);
+            MethodHandle handle = MethodHandles.lookup().findStatic(Class.forName("com.owen1212055.particlehelper.nms.ParticleHelper"), "getParticleSender", type);
+
+            SENDER_SUPPLIER = compiledParticle -> {
+                try {
+                    return (BiConsumer<Player, Location>) handle.invoke(compiledParticle);
+                } catch (Throwable e) {
+                    throw new RuntimeException(e);
+                }
+
+            };
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void boostrap() {
+        ParticleChannel supplier = (ParticleChannel) Bukkit.getPluginManager().getPlugin("ParticleHelper");
+        if (supplier == null) {
+            return;
+        }
+
+        SENDER_SUPPLIER = supplier;
+    }
+
     public SimpleCompiledParticle compileSender() {
         if (this.compiledSender != null) {
             throw new IllegalStateException("Already compiled sender.");
@@ -65,39 +100,5 @@ public class SimpleCompiledParticle implements CompiledParticle {
         }
 
         compiledSender.accept(player, location);
-    }
-
-    // Attempt to bind if this is shaded into a jar for example
-    public static void forceBind() {
-        if (SENDER_SUPPLIER == null) {
-            return;
-        }
-
-        try {
-            MethodType type = MethodType.methodType(BiConsumer.class, SimpleCompiledParticle.class);
-
-            MethodHandle handle = MethodHandles.lookup().findStatic(Class.forName("com.owen1212055.particlehelper.nms.ParticleHelper"), "getParticleSender", type);
-
-            SENDER_SUPPLIER = compiledParticle -> {
-                try {
-                    return (BiConsumer<Player, Location>) handle.invoke(compiledParticle);
-                } catch (Throwable e) {
-                    throw new RuntimeException(e);
-                }
-
-            };
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-
-    public static void bind() {
-        NmsSenderSupplier supplier = (NmsSenderSupplier) Bukkit.getPluginManager().getPlugin("ParticleHelper");
-        if (supplier == null) {
-            return;
-        }
-
-        SENDER_SUPPLIER = supplier;
     }
 }

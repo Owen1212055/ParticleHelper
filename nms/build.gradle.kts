@@ -1,4 +1,5 @@
-import java.nio.file.*
+import java.nio.file.Files
+import java.nio.file.StandardCopyOption
 
 plugins {
     java
@@ -30,7 +31,8 @@ val moveJars by tasks.register("moveFiles", DefaultTask::class)
 
 moveJars.doFirst {
 
-    val file = tasks.named<io.papermc.paperweight.tasks.RemapJar>("reobfJar").flatMap { task -> task.outputJar }.get().asFile.toPath()
+    val file = tasks.named<io.papermc.paperweight.tasks.RemapJar>("reobfJar").flatMap { task -> task.outputJar }
+        .get().asFile.toPath()
 
     if (Files.exists(file)) {
         Files.move(

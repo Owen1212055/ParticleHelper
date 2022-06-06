@@ -1,10 +1,11 @@
 package com.owen1212055.particlehelper.api.particle.types.itemcrack;
 
-import com.owen1212055.particlehelper.api.particle.compiled.*;
-import com.owen1212055.particlehelper.api.particle.types.common.velocity.*;
-import com.owen1212055.particlehelper.api.particle.types.*;
-import com.owen1212055.particlehelper.api.type.*;
-import org.bukkit.*;
+import com.owen1212055.particlehelper.api.particle.compiled.CompiledParticle;
+import com.owen1212055.particlehelper.api.particle.compiled.SimpleCompiledParticle;
+import com.owen1212055.particlehelper.api.particle.types.MaterialParticle;
+import com.owen1212055.particlehelper.api.particle.types.common.velocity.VelocityParticle;
+import com.owen1212055.particlehelper.api.type.ParticleType;
+import org.bukkit.Material;
 
 public class SingleItemCrackParticle extends VelocityParticle implements MaterialParticle {
 

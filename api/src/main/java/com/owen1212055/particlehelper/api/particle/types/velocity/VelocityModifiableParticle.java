@@ -1,6 +1,6 @@
 package com.owen1212055.particlehelper.api.particle.types.velocity;
 
-import com.owen1212055.particlehelper.api.particle.*;
+import com.owen1212055.particlehelper.api.particle.Particle;
 
 public interface VelocityModifiableParticle extends Particle, YModifiableParticle {
 

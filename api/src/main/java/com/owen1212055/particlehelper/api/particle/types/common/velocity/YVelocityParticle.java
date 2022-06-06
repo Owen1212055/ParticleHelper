@@ -1,9 +1,11 @@
 package com.owen1212055.particlehelper.api.particle.types.common.velocity;
 
-import com.owen1212055.particlehelper.api.particle.compiled.*;
-import com.owen1212055.particlehelper.api.particle.types.*;
-import com.owen1212055.particlehelper.api.particle.types.velocity.*;
-import com.owen1212055.particlehelper.api.type.*;
+import com.owen1212055.particlehelper.api.particle.compiled.CompiledParticle;
+import com.owen1212055.particlehelper.api.particle.compiled.SimpleCompiledParticle;
+import com.owen1212055.particlehelper.api.particle.types.AbstractMultiParticle;
+import com.owen1212055.particlehelper.api.particle.types.SpeedModifiableParticle;
+import com.owen1212055.particlehelper.api.particle.types.velocity.YModifiableParticle;
+import com.owen1212055.particlehelper.api.type.ParticleType;
 
 public class YVelocityParticle extends AbstractMultiParticle implements YModifiableParticle, SpeedModifiableParticle {
 

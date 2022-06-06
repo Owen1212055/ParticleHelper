@@ -2,21 +2,33 @@ package com.owen1212055.particlehelper.api.type;
 
 import com.owen1212055.particlehelper.api.particle.Particle;
 import com.owen1212055.particlehelper.api.particle.types.*;
-import com.owen1212055.particlehelper.api.particle.types.common.*;
-import com.owen1212055.particlehelper.api.particle.types.common.blockdata.*;
-import com.owen1212055.particlehelper.api.particle.types.common.destination.*;
-import com.owen1212055.particlehelper.api.particle.types.common.reducedmomentum.*;
-import com.owen1212055.particlehelper.api.particle.types.common.size.*;
-import com.owen1212055.particlehelper.api.particle.types.common.velocity.*;
-import com.owen1212055.particlehelper.api.particle.types.dust.*;
-import com.owen1212055.particlehelper.api.particle.types.dust.transition.*;
-import com.owen1212055.particlehelper.api.particle.types.entityeffect.*;
-import com.owen1212055.particlehelper.api.particle.types.itemcrack.*;
-import com.owen1212055.particlehelper.api.particle.types.note.*;
-import com.owen1212055.particlehelper.api.particle.types.vibration.*;
-import org.bukkit.*;
+import com.owen1212055.particlehelper.api.particle.types.common.SimpleMultiParticle;
+import com.owen1212055.particlehelper.api.particle.types.common.SimpleSingleParticle;
+import com.owen1212055.particlehelper.api.particle.types.common.blockdata.MultiBlockDataParticle;
+import com.owen1212055.particlehelper.api.particle.types.common.blockdata.SingleBlockDataParticle;
+import com.owen1212055.particlehelper.api.particle.types.common.destination.DestinationParticleImpl;
+import com.owen1212055.particlehelper.api.particle.types.common.reducedmomentum.ReducedMomentumParticle;
+import com.owen1212055.particlehelper.api.particle.types.common.size.MultiSizeParticle;
+import com.owen1212055.particlehelper.api.particle.types.common.size.SizeParticleImpl;
+import com.owen1212055.particlehelper.api.particle.types.common.velocity.MultiSpeedModifiableParticle;
+import com.owen1212055.particlehelper.api.particle.types.common.velocity.VelocityParticle;
+import com.owen1212055.particlehelper.api.particle.types.common.velocity.YVelocityParticle;
+import com.owen1212055.particlehelper.api.particle.types.dust.MultiDustParticle;
+import com.owen1212055.particlehelper.api.particle.types.dust.SingleDustParticle;
+import com.owen1212055.particlehelper.api.particle.types.dust.transition.MultiDustTransitionParticle;
+import com.owen1212055.particlehelper.api.particle.types.dust.transition.SingleDustTransitionParticle;
+import com.owen1212055.particlehelper.api.particle.types.entityeffect.MultiEntityEffectParticle;
+import com.owen1212055.particlehelper.api.particle.types.entityeffect.SingleEntityEffectParticle;
+import com.owen1212055.particlehelper.api.particle.types.itemcrack.MultiItemCrackParticle;
+import com.owen1212055.particlehelper.api.particle.types.itemcrack.SingleItemCrackParticle;
+import com.owen1212055.particlehelper.api.particle.types.note.MultiNoteParticle;
+import com.owen1212055.particlehelper.api.particle.types.note.SingleNoteParticle;
+import com.owen1212055.particlehelper.api.particle.types.vibration.MultiVibrationParticle;
+import com.owen1212055.particlehelper.api.particle.types.vibration.SingleVibrationParticle;
+import com.owen1212055.particlehelper.api.particle.types.vibration.VibrationParticle;
+import org.bukkit.NamespacedKey;
 
-import java.util.function.*;
+import java.util.function.Function;
 
 public interface Particles {
 
