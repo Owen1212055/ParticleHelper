@@ -23,6 +23,10 @@ import com.owen1212055.particlehelper.api.particle.types.itemcrack.MultiItemCrac
 import com.owen1212055.particlehelper.api.particle.types.itemcrack.SingleItemCrackParticle;
 import com.owen1212055.particlehelper.api.particle.types.note.MultiNoteParticle;
 import com.owen1212055.particlehelper.api.particle.types.note.SingleNoteParticle;
+import com.owen1212055.particlehelper.api.particle.types.sculkcharge.MultiSculkChargeParticle;
+import com.owen1212055.particlehelper.api.particle.types.sculkcharge.SingleSculkChargeParticle;
+import com.owen1212055.particlehelper.api.particle.types.shriek.MultiShriekParticle;
+import com.owen1212055.particlehelper.api.particle.types.shriek.SingleShriekParticle;
 import com.owen1212055.particlehelper.api.particle.types.vibration.MultiVibrationParticle;
 import com.owen1212055.particlehelper.api.particle.types.vibration.SingleVibrationParticle;
 import com.owen1212055.particlehelper.api.particle.types.vibration.VibrationParticle;
@@ -101,6 +105,11 @@ public interface Particles {
     StaticParticle RAIN = ofStatic("rain");
     MoveableParticle REVERSE_PORTAL = ofMoveable("reverse_portal");
     MoveableParticle SCRAPE = ofMoveable("scrape");
+    ParticleType<SingleSculkChargeParticle, MultiSculkChargeParticle> SCULK_CHARGE = of("sculk_charge", SingleSculkChargeParticle::new, MultiSculkChargeParticle::new);
+    MoveableParticle SCULK_CHARGE_POP = ofMoveable("sculk_charge_pop");
+    MoveableParticle SCULK_SOUL = ofMoveable("sculk_soul");
+    ParticleType<SingleShriekParticle, MultiShriekParticle> SHRIEK = of("shriek", SingleShriekParticle::new, MultiShriekParticle::new);
+    StaticParticle SONIC_BOOM = ofStatic("sonic_boom");
     MoveableParticle SMALL_FLAME = ofMoveable("small_flame");
     MoveableParticle SMOKE = ofMoveable("smoke");
     MoveableParticle SNEEZE = ofMoveable("sneeze");
@@ -223,6 +232,11 @@ public interface Particles {
             case ELECTRIC_SPARK -> ELECTRIC_SPARK;
             case SCRAPE -> SCRAPE;
             case BLOCK_MARKER -> BLOCK_MARKER;
+            case SHRIEK -> SHRIEK;
+            case SCULK_SOUL -> SCULK_SOUL;
+            case SCULK_CHARGE -> SCULK_CHARGE;
+            case SCULK_CHARGE_POP -> SCULK_CHARGE_POP;
+            case SONIC_BOOM -> SONIC_BOOM;
         };
     }
 

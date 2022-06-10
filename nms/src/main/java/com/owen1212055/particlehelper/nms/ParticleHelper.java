@@ -5,8 +5,8 @@ import com.owen1212055.particlehelper.api.type.ParticleType;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.network.protocol.game.ClientboundLevelParticlesPacket;
 import org.bukkit.Location;
-import org.bukkit.craftbukkit.v1_18_R2.CraftParticle;
-import org.bukkit.craftbukkit.v1_18_R2.entity.CraftPlayer;
+import org.bukkit.craftbukkit.v1_19_R1.CraftParticle;
+import org.bukkit.craftbukkit.v1_19_R1.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 
 import java.util.function.BiConsumer;
@@ -131,6 +131,10 @@ public class ParticleHelper {
         if (particle == ELECTRIC_SPARK) return org.bukkit.Particle.ELECTRIC_SPARK;
         if (particle == SCRAPE) return org.bukkit.Particle.SCRAPE;
         if (particle == BLOCK_MARKER) return org.bukkit.Particle.BLOCK_MARKER;
+        if (particle == SCULK_CHARGE) return org.bukkit.Particle.SCULK_CHARGE;
+        if (particle == SCULK_CHARGE_POP) return org.bukkit.Particle.SCULK_CHARGE_POP;
+        if (particle == SHRIEK) return org.bukkit.Particle.SHRIEK;
+        if (particle == SONIC_BOOM) return org.bukkit.Particle.SONIC_BOOM;
 
         throw new UnsupportedOperationException();
     }
