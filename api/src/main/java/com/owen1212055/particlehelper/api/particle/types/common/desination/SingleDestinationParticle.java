@@ -1,19 +1,18 @@
-package com.owen1212055.particlehelper.api.particle.types.common.destination;
+package com.owen1212055.particlehelper.api.particle.types.common.desination;
 
 import com.owen1212055.particlehelper.api.particle.compiled.CompiledParticle;
-import com.owen1212055.particlehelper.api.particle.compiled.SimpleCompiledParticle;
+import com.owen1212055.particlehelper.api.particle.compiled.simple.SimpleCompiledParticle;
 import com.owen1212055.particlehelper.api.particle.types.AbstractSingleParticle;
 import com.owen1212055.particlehelper.api.particle.types.DestinationParticle;
 import com.owen1212055.particlehelper.api.type.ParticleType;
 
-public class DestinationParticleImpl extends AbstractSingleParticle implements DestinationParticle {
+public class SingleDestinationParticle extends AbstractSingleParticle implements DestinationParticle {
 
     protected float xFrom;
     protected float yFrom;
     protected float zFrom;
-    protected float speed;
 
-    public DestinationParticleImpl(ParticleType<?, ?> particleType) {
+    public SingleDestinationParticle(ParticleType<?, ?> particleType) {
         super(particleType);
     }
 

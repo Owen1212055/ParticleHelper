@@ -1,12 +1,16 @@
-package com.owen1212055.particlehelper.api.particle.types.common.reducedmomentum;
+package com.owen1212055.particlehelper.api.particle.types.common.velocity;
 
 import com.owen1212055.particlehelper.api.particle.compiled.CompiledParticle;
-import com.owen1212055.particlehelper.api.particle.compiled.SimpleCompiledParticle;
+import com.owen1212055.particlehelper.api.particle.compiled.simple.SimpleCompiledParticle;
 import com.owen1212055.particlehelper.api.particle.types.AbstractSingleParticle;
-import com.owen1212055.particlehelper.api.particle.types.velocity.YModifiableParticle;
+import com.owen1212055.particlehelper.api.particle.types.velocity.YComponentVelocityParticle;
 import com.owen1212055.particlehelper.api.type.ParticleType;
 
-public class ReducedMomentumParticle extends AbstractSingleParticle implements YModifiableParticle {
+/**
+ * Represents a particle which has reduced momentum, which in this case is a very
+ * small specific amount of particles.
+ */
+public class ReducedMomentumParticle extends AbstractSingleParticle implements YComponentVelocityParticle {
 
     protected boolean reducedMomentum;
     protected float yVelocity;

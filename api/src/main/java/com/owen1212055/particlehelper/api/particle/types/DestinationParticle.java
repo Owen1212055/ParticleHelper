@@ -2,7 +2,10 @@ package com.owen1212055.particlehelper.api.particle.types;
 
 import com.owen1212055.particlehelper.api.particle.Particle;
 
-// Moved from origin to the spawn location
+/**
+ * Represents a particle that will start at the given position and move towards
+ * its spawning location.
+ */
 public interface DestinationParticle extends Particle {
 
     float getOriginX();

@@ -1,7 +1,7 @@
 package com.owen1212055.particlehelper.api.particle.types.shriek;
 
 import com.owen1212055.particlehelper.api.particle.compiled.CompiledParticle;
-import com.owen1212055.particlehelper.api.particle.compiled.SimpleCompiledParticle;
+import com.owen1212055.particlehelper.api.particle.compiled.simple.SimpleCompiledParticle;
 import com.owen1212055.particlehelper.api.particle.types.AbstractSingleParticle;
 import com.owen1212055.particlehelper.api.particle.types.DelayableParticle;
 import com.owen1212055.particlehelper.api.type.ParticleType;

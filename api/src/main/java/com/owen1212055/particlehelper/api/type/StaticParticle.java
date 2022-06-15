@@ -19,12 +19,12 @@ interface StaticParticle extends ParticleType<Particle, MultiParticle> {
         }
 
         @Override
-        public Particle single() {
+        public @NotNull Particle single() {
             return this.singleBuilder.apply(this);
         }
 
         @Override
-        public MultiParticle multi() {
+        public @NotNull MultiParticle multi() {
             return this.multibuilder.apply(this);
         }
     }

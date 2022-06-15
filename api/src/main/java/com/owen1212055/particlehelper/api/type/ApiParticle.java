@@ -17,12 +17,12 @@ record ApiParticle<S extends Particle, M extends Particle>(NamespacedKey key,
 
 
     @Override
-    public S single() {
+    public @NotNull S single() {
         return singleBuilder.apply(this);
     }
 
     @Override
-    public M multi() {
+    public @NotNull M multi() {
         return multibuilder.apply(this);
     }
 }

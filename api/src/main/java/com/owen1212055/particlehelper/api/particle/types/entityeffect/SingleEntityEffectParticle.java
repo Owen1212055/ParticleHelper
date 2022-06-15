@@ -1,15 +1,20 @@
 package com.owen1212055.particlehelper.api.particle.types.entityeffect;
 
 import com.owen1212055.particlehelper.api.particle.compiled.CompiledParticle;
-import com.owen1212055.particlehelper.api.particle.compiled.SimpleCompiledParticle;
+import com.owen1212055.particlehelper.api.particle.compiled.simple.SimpleCompiledParticle;
 import com.owen1212055.particlehelper.api.particle.types.AbstractSingleParticle;
 import com.owen1212055.particlehelper.api.particle.types.ColorableParticle;
+import com.owen1212055.particlehelper.api.particle.types.common.velocity.SingleRisingParticle;
 import com.owen1212055.particlehelper.api.type.ParticleType;
 import org.bukkit.Color;
 
+/**
+ * It should be noted that these particle share the same properties as {@link SingleRisingParticle}
+ * This means that the more green the color is, the "less random" the particle will appear.
+ */
 public class SingleEntityEffectParticle extends AbstractSingleParticle implements ColorableParticle {
 
-    private Color color;
+    private Color color = Color.WHITE;
 
     public SingleEntityEffectParticle(ParticleType<?, ?> particleType) {
         super(particleType);

@@ -13,7 +13,7 @@ repositories {
 
 dependencies {
     implementation(project(":api"))
-    compileOnly(project(":nms"))
+    implementation(project(":nms", configuration = "reobf"))
 
     implementation("org.bstats:bstats-bukkit:3.0.0")
 }
@@ -29,17 +29,10 @@ tasks {
         dependencies {
             relocate("org.bstats", "com.owen1212055.${rootProject.name}.libs.bstats")
         }
-
-        val nmsProject = project(":nms")
-        val moveTask = nmsProject.tasks.getByName("moveFiles")
-
-        moveTask.dependsOn(nmsProject.getTasksByName("reobfJar", true))
-
-        finalizedBy(moveTask)
     }
 
     runServer {
-        minecraftVersion("1.18.2")
+        minecraftVersion("1.19")
     }
 
 }

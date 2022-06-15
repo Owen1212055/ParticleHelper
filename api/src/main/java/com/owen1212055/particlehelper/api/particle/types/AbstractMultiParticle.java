@@ -3,6 +3,11 @@ package com.owen1212055.particlehelper.api.particle.types;
 import com.owen1212055.particlehelper.api.particle.MultiParticle;
 import com.owen1212055.particlehelper.api.type.ParticleType;
 
+/**
+ * The base implementation for a multi particle.
+ *
+ * Multi particles are always sent with a fixes amount, where there is an offset that represents the X/Y/Z.
+ */
 public abstract class AbstractMultiParticle implements MultiParticle {
 
     protected final ParticleType<?, ?> particleType;
@@ -59,12 +64,12 @@ public abstract class AbstractMultiParticle implements MultiParticle {
     }
 
     @Override
-    public void forceSend(boolean forceSend) {
+    public void forceShow(boolean forceSend) {
         this.alwaysSend = forceSend;
     }
 
     @Override
-    public boolean shouldForceSend() {
+    public boolean shouldForceShow() {
         return this.alwaysSend;
     }
 

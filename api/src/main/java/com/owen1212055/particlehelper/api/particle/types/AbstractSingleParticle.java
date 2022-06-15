@@ -14,12 +14,12 @@ public abstract class AbstractSingleParticle implements Particle {
     }
 
     @Override
-    public void forceSend(boolean forceSend) {
+    public void forceShow(boolean forceSend) {
         this.alwaysSend = forceSend;
     }
 
     @Override
-    public boolean shouldForceSend() {
+    public boolean shouldForceShow() {
         return alwaysSend;
     }
 

@@ -7,14 +7,43 @@ import org.bukkit.entity.Player;
 
 public interface Particle extends CompiledParticle {
 
+    /**
+     * Gets the ParticleType this particle represents.
+     * @return type
+     */
     ParticleType<?, ?> getType();
 
-    boolean shouldForceSend();
+    /**
+     * Is this particle forcibly shown on the client?
+     * @return is forcibly shown
+     */
+    boolean shouldForceShow();
 
-    void forceSend(boolean forceSend);
+    /**
+     * Represents if a particle should be forcibly shown
+     * on the client. This ignores all settings the client
+     * might have.
+     * @param forceShow should be forcibly shown
+     */
+    void forceShow(boolean forceShow);
 
+    /**
+     * Compiles an immutable version of this
+     * particle which can be sent to players.
+     *
+     * This is a way to send the same particle to many players
+     * in an optimized manner, where certain logic like sharing
+     * the packet can be done.
+     * @return compiled immutable particle
+     */
     CompiledParticle compile();
 
+    /**
+     * Quickly sends the particle to the player, a shortcut
+     * which throws away a compiled particle.
+     * @param player player
+     * @param location location
+     */
     @Override
     default void send(Player player, Location location) {
         compile().send(player, location);

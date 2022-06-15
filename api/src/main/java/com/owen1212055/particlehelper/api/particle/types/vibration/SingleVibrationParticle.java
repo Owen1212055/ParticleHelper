@@ -1,26 +1,28 @@
 package com.owen1212055.particlehelper.api.particle.types.vibration;
 
 import com.owen1212055.particlehelper.api.particle.compiled.CompiledParticle;
-import com.owen1212055.particlehelper.api.particle.compiled.SimpleCompiledParticle;
+import com.owen1212055.particlehelper.api.particle.compiled.simple.SimpleCompiledParticle;
 import com.owen1212055.particlehelper.api.particle.types.AbstractSingleParticle;
 import com.owen1212055.particlehelper.api.type.ParticleType;
+import org.bukkit.Location;
 import org.bukkit.Vibration;
+import org.jetbrains.annotations.NotNull;
 
 public class SingleVibrationParticle extends AbstractSingleParticle implements VibrationParticle {
 
-    private Vibration vibration;
+    private Vibration vibration = new Vibration(new Vibration.Destination.BlockDestination(new Location(null, 0, 0, 0)), 0);
 
     public SingleVibrationParticle(ParticleType<?, ?> particleType) {
         super(particleType);
     }
 
     @Override
-    public Vibration getVibration() {
+    public @NotNull Vibration getVibration() {
         return this.vibration;
     }
 
     @Override
-    public void setVibration(Vibration vibration) {
+    public void setVibration(@NotNull Vibration vibration) {
         this.vibration = vibration;
     }
 

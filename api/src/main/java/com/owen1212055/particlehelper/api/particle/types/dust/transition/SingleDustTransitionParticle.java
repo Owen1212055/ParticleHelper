@@ -1,11 +1,12 @@
 package com.owen1212055.particlehelper.api.particle.types.dust.transition;
 
 import com.owen1212055.particlehelper.api.particle.compiled.CompiledParticle;
-import com.owen1212055.particlehelper.api.particle.compiled.SimpleCompiledParticle;
+import com.owen1212055.particlehelper.api.particle.compiled.simple.SimpleCompiledParticle;
 import com.owen1212055.particlehelper.api.particle.types.dust.SingleDustParticle;
 import com.owen1212055.particlehelper.api.type.ParticleType;
 import org.bukkit.Color;
 import org.bukkit.Particle;
+import org.jetbrains.annotations.NotNull;
 
 public class SingleDustTransitionParticle extends SingleDustParticle implements TransitionDustParticle {
 
@@ -16,12 +17,12 @@ public class SingleDustTransitionParticle extends SingleDustParticle implements 
     }
 
     @Override
-    public Color getFadeColor() {
+    public @NotNull Color getFadeColor() {
         return this.fade;
     }
 
     @Override
-    public void setFadeColor(Color color) {
+    public void setFadeColor(@NotNull Color color) {
         this.fade = color;
     }
 
