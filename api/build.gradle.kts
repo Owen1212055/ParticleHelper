@@ -1,10 +1,9 @@
 plugins {
-    java
     `java-library`
-    id("com.github.johnrengelman.shadow") version "7.1.0"
 }
 
 group = "com.owen1212055"
+version = parent!!.version
 
 repositories {
     maven("https://papermc.io/repo/repository/maven-public/")
@@ -15,5 +14,10 @@ dependencies {
 }
 
 java {
-    toolchain.languageVersion.set(JavaLanguageVersion.of(17))
+    withJavadocJar()
+    withSourcesJar()
+}
+
+tasks.jar {
+    classifier = "api"
 }
