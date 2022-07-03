@@ -1,25 +1,27 @@
 plugins {
-    java
-    id("io.papermc.paperweight.userdev") version "1.3.5"
+    id("io.papermc.paperweight.userdev")
     id("com.github.johnrengelman.shadow") version "7.1.0"
 }
 
 group = "com.owen1212055"
-version = "1.0"
+version = parent!!.version
 
 repositories {
     mavenCentral()
 }
 
+tasks {
+    jar {
+        dependsOn(reobfJar)
+    }
+
+    reobfJar {
+        outputJar.set(layout.buildDirectory.file("libs/particlehelper-${project.version}.jar"))
+    }
+}
+
 dependencies {
     paperDevBundle("1.19-R0.1-SNAPSHOT")
 
-    compileOnly(project(":api")) {
-        isTransitive = false
-    }
-
-}
-
-java {
-    toolchain.languageVersion.set(JavaLanguageVersion.of(17))
+    implementation(project(":api"))
 }

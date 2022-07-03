@@ -12,12 +12,9 @@ repositories {
 }
 
 dependencies {
-    implementation(project(":api"))
+    compileOnly("io.papermc.paper:paper-api:1.19-R0.1-SNAPSHOT")
     implementation(project(":nms", configuration = "reobf"))
-
-    implementation("org.bstats:bstats-bukkit:3.0.0")
 }
-
 
 tasks {
     compileJava {
@@ -35,8 +32,4 @@ tasks {
         minecraftVersion("1.19")
     }
 
-}
-
-java {
-    toolchain.languageVersion.set(JavaLanguageVersion.of(17))
 }
