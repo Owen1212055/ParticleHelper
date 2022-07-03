@@ -32,6 +32,10 @@ publishing {
             from(project(":api").components["java"])
             artifact((project(":nms").tasks["reobfJar"] as io.papermc.paperweight.tasks.RemapJar).outputJar)
         }
+
+        tasks.withType<GenerateModuleMetadata> {
+            enabled = false
+        }
     }
 
     repositories {
