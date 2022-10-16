@@ -39,6 +39,6 @@ public class SingleRisingParticle extends AbstractMultiParticle implements YComp
         simpleCompiledParticle.offsetY = this.yVelocity;
         simpleCompiledParticle.speed = 1;
 
-        return simpleCompiledParticle;
+        return simpleCompiledParticle.compileSender();
     }
 }

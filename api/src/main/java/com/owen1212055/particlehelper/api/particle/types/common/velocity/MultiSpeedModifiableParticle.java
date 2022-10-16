@@ -29,6 +29,6 @@ public class MultiSpeedModifiableParticle extends AbstractMultiParticle implemen
         SimpleCompiledParticle simpleCompiledParticle = new SimpleCompiledParticle(this);
         simpleCompiledParticle.speed = this.speed;
 
-        return simpleCompiledParticle;
+        return simpleCompiledParticle.compileSender();
     }
 }
