@@ -3,6 +3,16 @@
 
 # Documentation
 
+### Gradle
+```kt
+repositories {
+    maven("https://repo.bytecode.space/")
+}
+dependencies {
+    implementation("com.owen1212055:particlehelper:1.0.0-SNAPSHOT")
+}
+```
+
 Allows you to handle particles nicely, accounting for all the weird exceptions.
 ```java
 // Send a single blue note to the player
