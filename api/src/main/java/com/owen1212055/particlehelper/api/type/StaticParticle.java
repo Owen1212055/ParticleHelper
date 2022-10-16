@@ -7,7 +7,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.function.Function;
 
-interface StaticParticle extends ParticleType<Particle, MultiParticle> {
+public interface StaticParticle extends ParticleType<Particle, MultiParticle> {
 
     record ApiParticle(NamespacedKey key,
                        Function<ApiParticle, Particle> singleBuilder,

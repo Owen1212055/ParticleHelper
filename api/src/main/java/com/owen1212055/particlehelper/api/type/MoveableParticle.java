@@ -7,7 +7,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.function.Function;
 
-interface MoveableParticle extends ParticleType<VelocityParticle, MultiSpeedModifiableParticle> {
+public interface MoveableParticle extends ParticleType<VelocityParticle, MultiSpeedModifiableParticle> {
 
     record ApiParticle(NamespacedKey key,
                        Function<ApiParticle, VelocityParticle> singleBuilder,
