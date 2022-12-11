@@ -184,6 +184,7 @@ public final class ParticleHelper {
         if (particle == ELECTRIC_SPARK) return org.bukkit.Particle.ELECTRIC_SPARK;
         if (particle == SCRAPE) return org.bukkit.Particle.SCRAPE;
         if (particle == BLOCK_MARKER) return org.bukkit.Particle.BLOCK_MARKER;
+        if (particle == SCULK_SOUL) return org.bukkit.Particle.SCULK_SOUL;
         if (particle == SCULK_CHARGE) return org.bukkit.Particle.SCULK_CHARGE;
         if (particle == SCULK_CHARGE_POP) return org.bukkit.Particle.SCULK_CHARGE_POP;
         if (particle == SHRIEK) return org.bukkit.Particle.SHRIEK;

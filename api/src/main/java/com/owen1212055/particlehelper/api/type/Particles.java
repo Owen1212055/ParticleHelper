@@ -1,18 +1,21 @@
 package com.owen1212055.particlehelper.api.type;
 
 import com.owen1212055.particlehelper.api.particle.Particle;
-import com.owen1212055.particlehelper.api.particle.types.*;
+import com.owen1212055.particlehelper.api.particle.types.BlockDataParticle;
+import com.owen1212055.particlehelper.api.particle.types.ColorableParticle;
+import com.owen1212055.particlehelper.api.particle.types.DestinationParticle;
+import com.owen1212055.particlehelper.api.particle.types.SizeableParticle;
 import com.owen1212055.particlehelper.api.particle.types.common.SimpleMultiParticle;
 import com.owen1212055.particlehelper.api.particle.types.common.SimpleSingleParticle;
 import com.owen1212055.particlehelper.api.particle.types.common.blockdata.MultiBlockDataParticle;
 import com.owen1212055.particlehelper.api.particle.types.common.blockdata.SingleBlockDataParticle;
 import com.owen1212055.particlehelper.api.particle.types.common.desination.SingleDestinationParticle;
-import com.owen1212055.particlehelper.api.particle.types.common.velocity.ReducedMomentumParticle;
 import com.owen1212055.particlehelper.api.particle.types.common.size.MultiSizeParticle;
 import com.owen1212055.particlehelper.api.particle.types.common.size.SingleSizeParticle;
 import com.owen1212055.particlehelper.api.particle.types.common.velocity.MultiSpeedModifiableParticle;
-import com.owen1212055.particlehelper.api.particle.types.common.velocity.VelocityParticle;
+import com.owen1212055.particlehelper.api.particle.types.common.velocity.ReducedMomentumParticle;
 import com.owen1212055.particlehelper.api.particle.types.common.velocity.SingleRisingParticle;
+import com.owen1212055.particlehelper.api.particle.types.common.velocity.VelocityParticle;
 import com.owen1212055.particlehelper.api.particle.types.dust.MultiDustParticle;
 import com.owen1212055.particlehelper.api.particle.types.dust.SingleDustParticle;
 import com.owen1212055.particlehelper.api.particle.types.dust.transition.MultiDustTransitionParticle;
@@ -30,7 +33,9 @@ import com.owen1212055.particlehelper.api.particle.types.shriek.SingleShriekPart
 import com.owen1212055.particlehelper.api.particle.types.vibration.MultiVibrationParticle;
 import com.owen1212055.particlehelper.api.particle.types.vibration.SingleVibrationParticle;
 import com.owen1212055.particlehelper.api.particle.types.vibration.VibrationParticle;
+import net.kyori.adventure.key.Key;
 import org.bukkit.NamespacedKey;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.function.Function;
 
@@ -130,16 +135,34 @@ public interface Particles {
     StaticParticle WHITE_ASH = ofStatic("white_ash");
     ParticleType<SingleRisingParticle, MultiSpeedModifiableParticle> WITCH = of("witch", SingleRisingParticle::new, MultiSpeedModifiableParticle::new);
 
+    /**
+     * Method for getting a particle from its namespacekey.
+     * Backwards compatability with old keys is not promised!
+     *
+     * @param key particle key
+     * @return particle
+     */
+    @Nullable
+    static ParticleType<?,?> fromKey(Key key) {
+        return ParticleRegistry.getParticle(key);
+    }
+
     private static MoveableParticle ofMoveable(String name) {
-        return new MoveableParticle.ApiParticle(NamespacedKey.minecraft(name), VelocityParticle::new, MultiSpeedModifiableParticle::new);
+        MoveableParticle particle = new MoveableParticle.ApiParticle(NamespacedKey.minecraft(name), VelocityParticle::new, MultiSpeedModifiableParticle::new);
+        ParticleRegistry.register(particle);
+        return particle;
     }
 
     private static StaticParticle ofStatic(String name) {
-        return new StaticParticle.ApiParticle(NamespacedKey.minecraft(name), SimpleSingleParticle::new, SimpleMultiParticle::new);
+        StaticParticle particle = new StaticParticle.ApiParticle(NamespacedKey.minecraft(name), SimpleSingleParticle::new, SimpleMultiParticle::new);
+        ParticleRegistry.register(particle);
+        return particle;
     }
 
     private static <S extends Particle, M extends Particle> ParticleType<S, M> of(String name, Function<ParticleType<S, M>, S> supplier, Function<ParticleType<S, M>, M> supplier2) {
-        return new ApiParticle<>(NamespacedKey.minecraft(name), supplier, supplier2);
+        ApiParticle<S, M> particle =  new ApiParticle<>(NamespacedKey.minecraft(name), supplier, supplier2);
+        ParticleRegistry.register(particle);
+        return particle;
     }
 
 }
