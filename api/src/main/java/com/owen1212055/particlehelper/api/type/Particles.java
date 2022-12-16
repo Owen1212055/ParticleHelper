@@ -33,11 +33,9 @@ import com.owen1212055.particlehelper.api.particle.types.shriek.SingleShriekPart
 import com.owen1212055.particlehelper.api.particle.types.vibration.MultiVibrationParticle;
 import com.owen1212055.particlehelper.api.particle.types.vibration.SingleVibrationParticle;
 import com.owen1212055.particlehelper.api.particle.types.vibration.VibrationParticle;
-import net.kyori.adventure.key.Key;
+import java.util.function.Function;
 import org.bukkit.NamespacedKey;
 import org.jetbrains.annotations.Nullable;
-
-import java.util.function.Function;
 
 public interface Particles {
 
@@ -143,7 +141,7 @@ public interface Particles {
      * @return particle
      */
     @Nullable
-    static ParticleType<?,?> fromKey(Key key) {
+    static ParticleType<?,?> fromKey(NamespacedKey key) {
         return ParticleRegistry.getParticle(key);
     }
 
