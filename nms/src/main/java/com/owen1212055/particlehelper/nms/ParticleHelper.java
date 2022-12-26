@@ -4,15 +4,15 @@ import com.owen1212055.particlehelper.api.particle.compiled.CompiledParticle;
 import com.owen1212055.particlehelper.api.particle.compiled.simple.SimpleCompiledParticle;
 import net.minecraft.core.Registry;
 import net.minecraft.core.particles.ParticleOptions;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.protocol.game.ClientboundLevelParticlesPacket;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.server.MinecraftServer;
 import org.bukkit.Location;
 import org.bukkit.NamespacedKey;
 import org.bukkit.Particle;
-import org.bukkit.craftbukkit.v1_19_R1.CraftParticle;
-import org.bukkit.craftbukkit.v1_19_R1.entity.CraftPlayer;
-import org.bukkit.craftbukkit.v1_19_R1.util.CraftNamespacedKey;
+import org.bukkit.craftbukkit.v1_19_R2.CraftParticle;
+import org.bukkit.craftbukkit.v1_19_R2.entity.CraftPlayer;
+import org.bukkit.craftbukkit.v1_19_R2.util.CraftNamespacedKey;
 import org.bukkit.entity.Player;
 
 import java.util.HashMap;
@@ -29,7 +29,7 @@ public class ParticleHelper {
     private static final Map<NamespacedKey, Particle> BUKKIT_MAP = new HashMap<>();
 
     static {
-        Registry<net.minecraft.core.particles.ParticleType<?>> particleTypes = MinecraftServer.getServer().registryAccess().registryOrThrow(Registry.PARTICLE_TYPE_REGISTRY);
+        Registry<net.minecraft.core.particles.ParticleType<?>> particleTypes = BuiltInRegistries.PARTICLE_TYPE;
         for (Map.Entry<ResourceKey<net.minecraft.core.particles.ParticleType<?>>, net.minecraft.core.particles.ParticleType<?>> particleType : particleTypes.entrySet()) {
             BUKKIT_MAP.put(CraftNamespacedKey.fromMinecraft(particleType.getKey().location()), CraftParticle.toBukkit(particleType.getValue()));
         }

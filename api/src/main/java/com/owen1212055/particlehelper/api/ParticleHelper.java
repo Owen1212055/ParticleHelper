@@ -25,7 +25,7 @@ public final class ParticleHelper {
 
     private static final Logger LOGGER = Logger.getLogger("ParticleHelper");
 
-    private static ParticleChannel ACTIVE_PARTICLE_CHANNEL= null;
+    private static ParticleChannel ACTIVE_PARTICLE_CHANNEL = null;
 
     /**
      * Attempts to setup the particle channel for sending
