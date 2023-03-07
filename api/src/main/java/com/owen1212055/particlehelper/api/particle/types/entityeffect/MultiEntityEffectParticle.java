@@ -24,7 +24,7 @@ public class MultiEntityEffectParticle extends AbstractMultiParticle {
     @Override
     public CompiledParticle compile() {
         SimpleCompiledParticle simpleCompiledParticle = new SimpleCompiledParticle(this);
-        simpleCompiledParticle.speed = colorMultiplier / 255;
+        simpleCompiledParticle.speed = colorMultiplier;
 
         return simpleCompiledParticle.compileSender();
     }

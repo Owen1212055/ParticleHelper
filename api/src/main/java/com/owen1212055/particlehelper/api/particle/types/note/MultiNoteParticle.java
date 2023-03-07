@@ -17,7 +17,7 @@ public class MultiNoteParticle extends AbstractMultiParticle {
         return this.colorMultiplier;
     }
 
-    public void setColorMultplier(float colorMultiplier) {
+    public void setColorMultiplier(float colorMultiplier) {
         this.colorMultiplier = colorMultiplier;
     }
 
