@@ -13,11 +13,12 @@ import com.owen1212055.particlehelper.api.particle.types.common.desination.Singl
 import com.owen1212055.particlehelper.api.particle.types.common.size.MultiSizeParticle;
 import com.owen1212055.particlehelper.api.particle.types.common.size.SingleSizeParticle;
 import com.owen1212055.particlehelper.api.particle.types.common.velocity.MultiSpeedModifiableParticle;
+import com.owen1212055.particlehelper.api.particle.types.common.velocity.MultiSpeedModifiableParticleImpl;
 import com.owen1212055.particlehelper.api.particle.types.common.velocity.ReducedMomentumParticle;
 import com.owen1212055.particlehelper.api.particle.types.common.velocity.SingleRisingParticle;
-import com.owen1212055.particlehelper.api.particle.types.common.velocity.VelocityParticle;
-import com.owen1212055.particlehelper.api.particle.types.dust.MultiDustParticle;
-import com.owen1212055.particlehelper.api.particle.types.dust.SingleDustParticle;
+import com.owen1212055.particlehelper.api.particle.types.common.velocity.VelocityParticleImpl;
+import com.owen1212055.particlehelper.api.particle.types.dust.simple.MultiDustParticle;
+import com.owen1212055.particlehelper.api.particle.types.dust.simple.SingleDustParticle;
 import com.owen1212055.particlehelper.api.particle.types.dust.transition.MultiDustTransitionParticle;
 import com.owen1212055.particlehelper.api.particle.types.dust.transition.SingleDustTransitionParticle;
 import com.owen1212055.particlehelper.api.particle.types.entityeffect.MultiEntityEffectParticle;
@@ -39,11 +40,11 @@ import org.jetbrains.annotations.Nullable;
 
 public interface Particles {
 
-    ParticleType<ColorableParticle, MultiEntityEffectParticle> AMBIENT_ENTITY_EFFECT = of("ambient_entity_effect", SingleEntityEffectParticle::new, MultiEntityEffectParticle::new);
+    ParticleType<SingleEntityEffectParticle, MultiEntityEffectParticle> AMBIENT_ENTITY_EFFECT = of("ambient_entity_effect", SingleEntityEffectParticle::new, MultiEntityEffectParticle::new);
     StaticParticle ANGRY_VILLAGER = ofStatic("angry_villager");
     StaticParticle ASH = ofStatic("ash");
-    ParticleType<BlockDataParticle, MultiBlockDataParticle> BLOCK = of("block", SingleBlockDataParticle::new, MultiBlockDataParticle::new);
-    ParticleType<BlockDataParticle, MultiBlockDataParticle> BLOCK_MARKER = of("block_marker", SingleBlockDataParticle::new, MultiBlockDataParticle::new);
+    ParticleType<SingleBlockDataParticle, MultiBlockDataParticle> BLOCK = of("block", SingleBlockDataParticle::new, MultiBlockDataParticle::new);
+    ParticleType<SingleBlockDataParticle, MultiBlockDataParticle> BLOCK_MARKER = of("block_marker", SingleBlockDataParticle::new, MultiBlockDataParticle::new);
     MoveableParticle BUBBLE = ofMoveable("bubble");
     MoveableParticle BUBBLE_COLUMN_UP = ofMoveable("bubble_column_up");
     MoveableParticle BUBBLE_POP = ofMoveable("bubble_pop");
@@ -64,19 +65,19 @@ public interface Particles {
     StaticParticle DRIPPING_OBSIDIAN_TEAR = ofStatic("dripping_obsidian_tear");
     StaticParticle DRIPPING_WATER = ofStatic("dripping_water");
     ParticleType<SingleDustParticle, MultiDustParticle> DUST = of("dust", SingleDustParticle::new, MultiDustParticle::new);
-    ParticleType<SingleDustTransitionParticle, MultiDustParticle> DUST_COLOR_TRANSITION = of("dust_color_transition", SingleDustTransitionParticle::new, MultiDustTransitionParticle::new);
+    ParticleType<SingleDustTransitionParticle, MultiDustTransitionParticle> DUST_COLOR_TRANSITION = of("dust_color_transition", SingleDustTransitionParticle::new, MultiDustTransitionParticle::new);
     ParticleType<ReducedMomentumParticle, MultiSpeedModifiableParticle> EFFECT = of("effect", ReducedMomentumParticle::new, MultiSpeedModifiableParticle::new);
     StaticParticle ELDER_GUARDIAN = ofStatic("elder_guardian");
     MoveableParticle ELECTRIC_SPARK = ofMoveable("electric_spark");
-    ParticleType<DestinationParticle, MultiSpeedModifiableParticle> ENCHANT = of("enchant", SingleDestinationParticle::new, MultiSpeedModifiableParticle::new);
+    ParticleType<SingleDestinationParticle, MultiSpeedModifiableParticle> ENCHANT = of("enchant", SingleDestinationParticle::new, MultiSpeedModifiableParticle::new);
     MoveableParticle ENCHANTED_HIT = ofMoveable("enchanted_hit");
     MoveableParticle END_ROD = ofMoveable("end_rod");
-    ParticleType<ColorableParticle, MultiEntityEffectParticle> ENTITY_EFFECT = of("entity_effect", SingleEntityEffectParticle::new, MultiEntityEffectParticle::new);
-    ParticleType<SizeableParticle, MultiSizeParticle> EXPLOSION = of("explosion", SingleSizeParticle::new, MultiSizeParticle::new);
+    ParticleType<SingleEntityEffectParticle, MultiEntityEffectParticle> ENTITY_EFFECT = of("entity_effect", SingleEntityEffectParticle::new, MultiEntityEffectParticle::new);
+    ParticleType<SingleSizeParticle, MultiSizeParticle> EXPLOSION = of("explosion", SingleSizeParticle::new, MultiSizeParticle::new);
     StaticParticle EXPLOSION_EMITTER = ofStatic("explosion_emitter");
     StaticParticle FALLING_DRIPSTONE_LAVA = ofStatic("falling_dripstone_lava");
     StaticParticle FALLING_DRIPSTONE_WATER = ofStatic("falling_dripstone_water");
-    ParticleType<BlockDataParticle, MultiBlockDataParticle> FALLING_DUST = of("falling_dust", SingleBlockDataParticle::new, MultiBlockDataParticle::new);
+    ParticleType<SingleBlockDataParticle, MultiBlockDataParticle> FALLING_DUST = of("falling_dust", SingleBlockDataParticle::new, MultiBlockDataParticle::new);
     StaticParticle FALLING_HONEY = ofStatic("falling_honey");
     StaticParticle FALLING_LAVA = ofStatic("falling_lava");
     StaticParticle FALLING_NECTAR = ofStatic("falling_nectar");
@@ -101,10 +102,10 @@ public interface Particles {
     MoveableParticle LARGE_SMOKE = ofMoveable("large_smoke");
     StaticParticle LAVA = ofStatic("lava");
     MoveableParticle MYCELIUM = ofMoveable("mycelium");
-    ParticleType<DestinationParticle, MultiSpeedModifiableParticle> NAUTILUS = of("nautilus", SingleDestinationParticle::new, MultiSpeedModifiableParticle::new);
-    ParticleType<ColorableParticle, MultiNoteParticle> NOTE = of("note", SingleNoteParticle::new, MultiNoteParticle::new);
+    ParticleType<SingleDestinationParticle, MultiSpeedModifiableParticle> NAUTILUS = of("nautilus", SingleDestinationParticle::new, MultiSpeedModifiableParticle::new);
+    ParticleType<SingleNoteParticle, MultiNoteParticle> NOTE = of("note", SingleNoteParticle::new, MultiNoteParticle::new);
     MoveableParticle POOF = ofMoveable("poof");
-    ParticleType<DestinationParticle, MultiSpeedModifiableParticle> PORTAL = of("portal", SingleDestinationParticle::new, MultiSpeedModifiableParticle::new);
+    ParticleType<SingleDestinationParticle, MultiSpeedModifiableParticle> PORTAL = of("portal", SingleDestinationParticle::new, MultiSpeedModifiableParticle::new);
     StaticParticle RAIN = ofStatic("rain");
     MoveableParticle REVERSE_PORTAL = ofMoveable("reverse_portal");
     MoveableParticle SCRAPE = ofMoveable("scrape");
@@ -123,10 +124,10 @@ public interface Particles {
     MoveableParticle SPLASH = ofMoveable("splash");
     StaticParticle SPORE_BLOSSOM_AIR = ofStatic("spore_blossom_air");
     MoveableParticle SQUID_INK = ofMoveable("squid_ink");
-    ParticleType<SizeableParticle, MultiSizeParticle> SWEEP_ATTACK = of("sweep_attack", SingleSizeParticle::new, MultiSizeParticle::new);
+    ParticleType<SingleSizeParticle, MultiSizeParticle> SWEEP_ATTACK = of("sweep_attack", SingleSizeParticle::new, MultiSizeParticle::new);
     MoveableParticle TOTEM_OF_UNDYING = ofMoveable("totem_of_undying");
     StaticParticle UNDERWATER = ofStatic("underwater");
-    ParticleType<VibrationParticle, MultiVibrationParticle> VIBRATION = of("vibration", SingleVibrationParticle::new, MultiVibrationParticle::new);
+    ParticleType<SingleVibrationParticle, MultiVibrationParticle> VIBRATION = of("vibration", SingleVibrationParticle::new, MultiVibrationParticle::new);
     StaticParticle WARPED_SPORE = ofStatic("warped_spore");
     MoveableParticle WAX_OFF = ofMoveable("wax_off");
     MoveableParticle WAX_ON = ofMoveable("wax_on");
@@ -146,7 +147,7 @@ public interface Particles {
     }
 
     private static MoveableParticle ofMoveable(String name) {
-        MoveableParticle particle = new MoveableParticle.ApiParticle(NamespacedKey.minecraft(name), VelocityParticle::new, MultiSpeedModifiableParticle::new);
+        MoveableParticle particle = new MoveableParticle.ApiParticle(NamespacedKey.minecraft(name), VelocityParticleImpl::new, MultiSpeedModifiableParticle::new);
         ParticleRegistry.register(particle);
         return particle;
     }
@@ -157,7 +158,7 @@ public interface Particles {
         return particle;
     }
 
-    private static <S extends Particle, M extends Particle> ParticleType<S, M> of(String name, Function<ParticleType<S, M>, S> supplier, Function<ParticleType<S, M>, M> supplier2) {
+    private static <S extends Particle<?>, M extends Particle<?>> ParticleType<S, M> of(String name, Function<ParticleType<S, M>, S> supplier, Function<ParticleType<S, M>, M> supplier2) {
         ApiParticle<S, M> particle =  new ApiParticle<>(NamespacedKey.minecraft(name), supplier, supplier2);
         ParticleRegistry.register(particle);
         return particle;

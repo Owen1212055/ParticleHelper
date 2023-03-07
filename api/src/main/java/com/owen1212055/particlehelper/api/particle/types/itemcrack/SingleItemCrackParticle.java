@@ -3,13 +3,13 @@ package com.owen1212055.particlehelper.api.particle.types.itemcrack;
 import com.owen1212055.particlehelper.api.particle.compiled.CompiledParticle;
 import com.owen1212055.particlehelper.api.particle.compiled.simple.SimpleCompiledParticle;
 import com.owen1212055.particlehelper.api.particle.types.ItemStackParticle;
-import com.owen1212055.particlehelper.api.particle.types.common.velocity.VelocityParticle;
+import com.owen1212055.particlehelper.api.particle.types.common.velocity.VelocityParticleImpl;
 import com.owen1212055.particlehelper.api.type.ParticleType;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
 
-public class SingleItemCrackParticle extends VelocityParticle implements ItemStackParticle {
+public class SingleItemCrackParticle extends VelocityParticleImpl<SingleItemCrackParticle> implements ItemStackParticle<SingleItemCrackParticle> {
 
     private ItemStack data = new ItemStack(Material.APPLE);
 
@@ -18,17 +18,19 @@ public class SingleItemCrackParticle extends VelocityParticle implements ItemSta
     }
 
     @Override
-    public @NotNull ItemStack getItemStack() {
+    public @NotNull ItemStack itemStack() {
         return this.data;
     }
 
+    @NotNull
     @Override
-    public void setItemStack(@NotNull ItemStack material) {
+    public SingleItemCrackParticle itemStack(@NotNull ItemStack material) {
         this.data = material;
+        return this;
     }
 
     @Override
-    public CompiledParticle compile() {
+    public @NotNull CompiledParticle compile() {
         SimpleCompiledParticle simpleCompiledParticle = new SimpleCompiledParticle(this);
         simpleCompiledParticle.offsetX = this.xVelocity;
         simpleCompiledParticle.offsetY = this.yVelocity;

@@ -5,8 +5,9 @@ import com.owen1212055.particlehelper.api.particle.compiled.simple.SimpleCompile
 import com.owen1212055.particlehelper.api.particle.types.AbstractSingleParticle;
 import com.owen1212055.particlehelper.api.particle.types.SizeableParticle;
 import com.owen1212055.particlehelper.api.type.ParticleType;
+import org.jetbrains.annotations.NotNull;
 
-public class SingleSizeParticle extends AbstractSingleParticle implements SizeableParticle {
+public class SingleSizeParticle extends AbstractSingleParticle<SingleSizeParticle> implements SizeableParticle<SingleSizeParticle> {
 
     private float size;
 
@@ -15,17 +16,19 @@ public class SingleSizeParticle extends AbstractSingleParticle implements Sizeab
     }
 
     @Override
-    public float getSize() {
+    public float size() {
         return this.size;
     }
 
+    @NotNull
     @Override
-    public void setSize(float size) {
+    public SingleSizeParticle size(float size) {
         this.size = size;
+        return this;
     }
 
     @Override
-    public CompiledParticle compile() {
+    public @NotNull CompiledParticle compile() {
         SimpleCompiledParticle simpleCompiledParticle = new SimpleCompiledParticle(this);
         simpleCompiledParticle.offsetX = this.size;
         simpleCompiledParticle.speed = 1; // Keep size constant

@@ -5,8 +5,9 @@ import com.owen1212055.particlehelper.api.particle.compiled.simple.SimpleCompile
 import com.owen1212055.particlehelper.api.particle.types.AbstractSingleParticle;
 import com.owen1212055.particlehelper.api.particle.types.DelayableParticle;
 import com.owen1212055.particlehelper.api.type.ParticleType;
+import org.jetbrains.annotations.NotNull;
 
-public class SingleShriekParticle extends AbstractSingleParticle implements DelayableParticle {
+public class SingleShriekParticle extends AbstractSingleParticle<SingleShriekParticle> implements DelayableParticle<SingleShriekParticle> {
 
     private int delay;
 
@@ -15,17 +16,18 @@ public class SingleShriekParticle extends AbstractSingleParticle implements Dela
     }
 
     @Override
-    public int getDelay() {
+    public int delay() {
         return this.delay;
     }
 
     @Override
-    public void setDelay(int delay) {
+    public @NotNull SingleShriekParticle delay(int delay) {
         this.delay = delay;
+        return this;
     }
 
     @Override
-    public CompiledParticle compile() {
+    public @NotNull CompiledParticle compile() {
         SimpleCompiledParticle simpleCompiledParticle = new SimpleCompiledParticle(this);
         simpleCompiledParticle.data = this.delay;
         simpleCompiledParticle.speed = 1; // Keep speed constant

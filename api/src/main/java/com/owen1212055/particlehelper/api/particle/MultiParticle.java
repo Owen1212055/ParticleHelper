@@ -1,21 +1,32 @@
 package com.owen1212055.particlehelper.api.particle;
 
-public interface MultiParticle extends Particle {
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
 
-    int getCount();
+public interface MultiParticle<T extends Particle<T>> extends Particle<T> {
 
-    void setCount(int count);
+    int count();
 
-    float getXOffset();
+    @Contract("_ -> this")
+    @NotNull
+    T count(int count);
 
-    void setXOffset(float offset);
+    float xOffset();
 
-    float getYOffset();
+    @Contract("_ -> this")
+    @NotNull
+    T xOffset(float offset);
 
-    void setYOffset(float offset);
+    float yOffset();
 
-    float getZOffset();
+    @Contract("_ -> this")
+    @NotNull
+    T yOffset(float offset);
 
-    void setZOffset(float zOffset);
+    float zOffset();
+
+    @Contract("_ -> this")
+    @NotNull
+    T zOffset(float zOffset);
 
 }

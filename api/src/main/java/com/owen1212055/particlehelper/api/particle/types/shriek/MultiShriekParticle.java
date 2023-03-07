@@ -5,8 +5,9 @@ import com.owen1212055.particlehelper.api.particle.compiled.simple.SimpleCompile
 import com.owen1212055.particlehelper.api.particle.types.AbstractMultiParticle;
 import com.owen1212055.particlehelper.api.particle.types.DelayableParticle;
 import com.owen1212055.particlehelper.api.type.ParticleType;
+import org.jetbrains.annotations.NotNull;
 
-public class MultiShriekParticle extends AbstractMultiParticle implements DelayableParticle {
+public class MultiShriekParticle extends AbstractMultiParticle<MultiShriekParticle> implements DelayableParticle<MultiShriekParticle> {
 
     private int delay;
 
@@ -15,17 +16,18 @@ public class MultiShriekParticle extends AbstractMultiParticle implements Delaya
     }
 
     @Override
-    public int getDelay() {
+    public int delay() {
         return this.delay;
     }
 
     @Override
-    public void setDelay(int delay) {
+    public @NotNull MultiShriekParticle delay(int delay) {
         this.delay = delay;
+        return this;
     }
 
     @Override
-    public CompiledParticle compile() {
+    public @NotNull CompiledParticle compile() {
         SimpleCompiledParticle simpleCompiledParticle = new SimpleCompiledParticle(this);
         simpleCompiledParticle.data = delay;
 

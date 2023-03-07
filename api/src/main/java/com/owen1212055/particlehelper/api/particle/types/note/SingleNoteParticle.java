@@ -6,8 +6,9 @@ import com.owen1212055.particlehelper.api.particle.types.AbstractSingleParticle;
 import com.owen1212055.particlehelper.api.particle.types.ColorableParticle;
 import com.owen1212055.particlehelper.api.type.ParticleType;
 import org.bukkit.Color;
+import org.jetbrains.annotations.NotNull;
 
-public class SingleNoteParticle extends AbstractSingleParticle implements ColorableParticle {
+public class SingleNoteParticle extends AbstractSingleParticle<SingleNoteParticle> implements ColorableParticle<SingleNoteParticle> {
 
     private Color color;
     private float magicColor;
@@ -17,7 +18,7 @@ public class SingleNoteParticle extends AbstractSingleParticle implements Colora
     }
 
     @Override
-    public Color getColor() {
+    public Color color() {
         return color;
     }
 
@@ -26,8 +27,9 @@ public class SingleNoteParticle extends AbstractSingleParticle implements Colora
      * to give the best possible color that matches.
      * @param color color
      */
+    @NotNull
     @Override
-    public void setColor(Color color) {
+    public SingleNoteParticle color(Color color) {
         int r = color.getRed();
         int g = color.getGreen();
         int b = color.getBlue();
@@ -64,10 +66,12 @@ public class SingleNoteParticle extends AbstractSingleParticle implements Colora
         int blue = (int) Math.max(0.0F, Math.sin((this.magicColor + 0.6666667F) * magic) * 0.65F + 0.35F) * 255;
 
         this.color = Color.fromRGB(red, green, blue);
+
+        return this;
     }
 
     @Override
-    public CompiledParticle compile() {
+    public @NotNull CompiledParticle compile() {
         SimpleCompiledParticle simpleCompiledParticle = new SimpleCompiledParticle(this);
         simpleCompiledParticle.offsetX = this.magicColor;
         simpleCompiledParticle.speed = 1; // Keep speed constant

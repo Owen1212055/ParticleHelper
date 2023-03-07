@@ -6,7 +6,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.function.Function;
 
-record ApiParticle<S extends Particle, M extends Particle>(NamespacedKey key,
+record ApiParticle<S extends Particle<?>, M extends Particle<?>>(NamespacedKey key,
                                                            Function<ParticleType<S, M>, S> singleBuilder,
                                                            Function<ParticleType<S, M>, M> multibuilder) implements ParticleType<S, M> {
 

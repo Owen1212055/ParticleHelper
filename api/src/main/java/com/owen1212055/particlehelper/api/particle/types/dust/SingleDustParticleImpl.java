@@ -2,42 +2,49 @@ package com.owen1212055.particlehelper.api.particle.types.dust;
 
 import com.owen1212055.particlehelper.api.particle.compiled.CompiledParticle;
 import com.owen1212055.particlehelper.api.particle.compiled.simple.SimpleCompiledParticle;
-import com.owen1212055.particlehelper.api.particle.types.common.velocity.VelocityParticle;
+import com.owen1212055.particlehelper.api.particle.types.common.velocity.VelocityParticleImpl;
 import com.owen1212055.particlehelper.api.type.ParticleType;
 import org.bukkit.Color;
 import org.bukkit.Particle;
+import org.jetbrains.annotations.NotNull;
 
-public class SingleDustParticle extends VelocityParticle implements DustParticle {
+public abstract class SingleDustParticleImpl<T extends com.owen1212055.particlehelper.api.particle.Particle<T>> extends VelocityParticleImpl<T> implements DustParticle<T> {
 
     protected Color color = Color.RED;
     protected float size;
 
-    public SingleDustParticle(ParticleType<?, ?> particleType) {
+    public SingleDustParticleImpl(ParticleType<?, ?> particleType) {
         super(particleType);
     }
 
     @Override
-    public Color getColor() {
+    public Color color() {
         return this.color;
     }
 
+    @SuppressWarnings("unchecked")
+    @NotNull
     @Override
-    public void setColor(Color color) {
+    public T color(Color color) {
         this.color = color;
+        return (T) this;
     }
 
     @Override
-    public float getSize() {
+    public float size() {
         return this.size;
     }
 
+    @SuppressWarnings("unchecked")
+    @NotNull
     @Override
-    public void setSize(float size) {
+    public T size(float size) {
         this.size = size;
+        return (T) this;
     }
 
     @Override
-    public CompiledParticle compile() {
+    public @NotNull CompiledParticle compile() {
         SimpleCompiledParticle simpleCompiledParticle = new SimpleCompiledParticle(this);
         simpleCompiledParticle.offsetX = this.xVelocity;
         simpleCompiledParticle.offsetY = this.yVelocity;

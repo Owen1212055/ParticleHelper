@@ -27,24 +27,24 @@ public class SimpleCompiledParticle implements CompiledParticle {
 
     public BiConsumer<Player, Location> compiledSender;
 
-    public SimpleCompiledParticle(MultiParticle multiParticle) {
+    public SimpleCompiledParticle(MultiParticle<?> multiParticle) {
         this.particle = multiParticle.getType();
-        this.offsetX = multiParticle.getXOffset();
-        this.offsetY = multiParticle.getYOffset();
-        this.offsetZ = multiParticle.getZOffset();
-        this.count = multiParticle.getCount();
-        this.longDistance = multiParticle.shouldForceShow();
+        this.offsetX = multiParticle.xOffset();
+        this.offsetY = multiParticle.yOffset();
+        this.offsetZ = multiParticle.zOffset();
+        this.count = multiParticle.count();
+        this.longDistance = multiParticle.forceShow();
     }
 
-    public SimpleCompiledParticle(AbstractSingleParticle singleParticle) {
+    public SimpleCompiledParticle(AbstractSingleParticle<?> singleParticle) {
         this.particle = singleParticle.getType();
         this.count = 0;
-        this.longDistance = singleParticle.shouldForceShow();
+        this.longDistance = singleParticle.forceShow();
     }
 
     @Override
     public void send(Player player, Location location) {
-        compiledSender.accept(player, location);
+        this.compiledSender.accept(player, location);
     }
 
     public CompiledParticle compileSender() {

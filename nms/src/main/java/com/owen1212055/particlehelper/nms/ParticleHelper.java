@@ -35,6 +35,15 @@ public class ParticleHelper {
         }
     }
 
+    // TODO: 1.19.4
+    public static CompiledParticle getGroupedSender(CompiledParticle... simpleCompiledParticles) {
+        return (player, location) -> {
+            for (CompiledParticle compiledParticle : simpleCompiledParticles) {
+                compiledParticle.send(player, location);
+            }
+        };
+    }
+
     public static BiConsumer<Player, Location> getParticleSender(CompiledParticle compiledParticle) {
         SimpleCompiledParticle compiled;
         if (!(compiledParticle instanceof SimpleCompiledParticle)) {

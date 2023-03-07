@@ -2,6 +2,7 @@ package com.owen1212055.particlehelper.api.particle.compiled;
 
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
+import org.jetbrains.annotations.ApiStatus;
 
 /**
  * A compiled particle is responsible for sending a
@@ -12,6 +13,7 @@ import org.bukkit.entity.Player;
  * You can simply store this compiled particle and there will be
  * no overhead of recalculating values.
  */
+@ApiStatus.NonExtendable
 public interface CompiledParticle {
 
     void send(Player player, Location location);

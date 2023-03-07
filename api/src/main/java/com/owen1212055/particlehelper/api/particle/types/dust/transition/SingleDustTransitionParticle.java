@@ -2,13 +2,13 @@ package com.owen1212055.particlehelper.api.particle.types.dust.transition;
 
 import com.owen1212055.particlehelper.api.particle.compiled.CompiledParticle;
 import com.owen1212055.particlehelper.api.particle.compiled.simple.SimpleCompiledParticle;
-import com.owen1212055.particlehelper.api.particle.types.dust.SingleDustParticle;
+import com.owen1212055.particlehelper.api.particle.types.dust.SingleDustParticleImpl;
 import com.owen1212055.particlehelper.api.type.ParticleType;
 import org.bukkit.Color;
 import org.bukkit.Particle;
 import org.jetbrains.annotations.NotNull;
 
-public class SingleDustTransitionParticle extends SingleDustParticle implements TransitionDustParticle {
+public class SingleDustTransitionParticle extends SingleDustParticleImpl<SingleDustTransitionParticle> implements TransitionDustParticle<SingleDustTransitionParticle> {
 
     private Color fade = Color.RED;
 
@@ -17,17 +17,18 @@ public class SingleDustTransitionParticle extends SingleDustParticle implements 
     }
 
     @Override
-    public @NotNull Color getFadeColor() {
+    public @NotNull Color fadeColor() {
         return this.fade;
     }
 
     @Override
-    public void setFadeColor(@NotNull Color color) {
+    public @NotNull SingleDustTransitionParticle fadeColor(@NotNull Color color) {
         this.fade = color;
+        return this;
     }
 
     @Override
-    public CompiledParticle compile() {
+    public @NotNull CompiledParticle compile() {
         SimpleCompiledParticle simpleCompiledParticle = new SimpleCompiledParticle(this);
         simpleCompiledParticle.offsetX = this.xVelocity;
         simpleCompiledParticle.offsetY = this.yVelocity;

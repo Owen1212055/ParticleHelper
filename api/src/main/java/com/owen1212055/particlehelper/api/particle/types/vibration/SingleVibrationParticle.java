@@ -8,7 +8,7 @@ import org.bukkit.Location;
 import org.bukkit.Vibration;
 import org.jetbrains.annotations.NotNull;
 
-public class SingleVibrationParticle extends AbstractSingleParticle implements VibrationParticle {
+public class SingleVibrationParticle extends AbstractSingleParticle<SingleVibrationParticle> implements VibrationParticle<SingleVibrationParticle> {
 
     private Vibration vibration = new Vibration(new Vibration.Destination.BlockDestination(new Location(null, 0, 0, 0)), 0);
 
@@ -17,17 +17,19 @@ public class SingleVibrationParticle extends AbstractSingleParticle implements V
     }
 
     @Override
-    public @NotNull Vibration getVibration() {
+    public @NotNull Vibration vibration() {
         return this.vibration;
     }
 
+    @NotNull
     @Override
-    public void setVibration(@NotNull Vibration vibration) {
+    public SingleVibrationParticle vibration(@NotNull Vibration vibration) {
         this.vibration = vibration;
+        return this;
     }
 
     @Override
-    public CompiledParticle compile() {
+    public @NotNull CompiledParticle compile() {
         SimpleCompiledParticle simpleCompiledParticle = new SimpleCompiledParticle(this);
         simpleCompiledParticle.data = this.vibration;
 

@@ -5,12 +5,13 @@ import com.owen1212055.particlehelper.api.particle.compiled.simple.SimpleCompile
 import com.owen1212055.particlehelper.api.particle.types.AbstractSingleParticle;
 import com.owen1212055.particlehelper.api.particle.types.velocity.YComponentVelocityParticle;
 import com.owen1212055.particlehelper.api.type.ParticleType;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * Represents a particle which has reduced momentum, which in this case is a very
  * small specific amount of particles.
  */
-public class ReducedMomentumParticle extends AbstractSingleParticle implements YComponentVelocityParticle {
+public class ReducedMomentumParticle extends AbstractSingleParticle<ReducedMomentumParticle> implements YComponentVelocityParticle<ReducedMomentumParticle> {
 
     protected boolean reducedMomentum;
     protected float yVelocity;
@@ -23,22 +24,24 @@ public class ReducedMomentumParticle extends AbstractSingleParticle implements Y
         return this.reducedMomentum;
     }
 
-    public void setHasReducedHorizontalMomentum(boolean reduced) {
+    public ReducedMomentumParticle setHasReducedHorizontalMomentum(boolean reduced) {
         this.reducedMomentum = reduced;
+        return this;
     }
 
     @Override
-    public float getVelocityY() {
+    public float velocityY() {
         return this.yVelocity;
     }
 
     @Override
-    public void setVelocityY(float yVelocity) {
+    public @NotNull ReducedMomentumParticle velocityY(float yVelocity) {
         this.yVelocity = yVelocity;
+        return this;
     }
 
     @Override
-    public CompiledParticle compile() {
+    public @NotNull CompiledParticle compile() {
         SimpleCompiledParticle simpleCompiledParticle = new SimpleCompiledParticle(this);
         simpleCompiledParticle.offsetX = this.reducedMomentum ? 0 : 1;
         simpleCompiledParticle.offsetY = this.yVelocity;

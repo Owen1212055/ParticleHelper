@@ -1,23 +1,31 @@
 package com.owen1212055.particlehelper.api.particle.types;
 
 import com.owen1212055.particlehelper.api.particle.Particle;
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * Represents a particle that will start at the given position and move towards
  * its spawning location.
  */
-public interface DestinationParticle extends Particle {
+public interface DestinationParticle<T extends Particle<T>> extends Particle<T> {
 
-    float getOriginX();
+    float originX();
 
-    void setOriginX(float x);
+    @Contract("_ -> this")
+    @NotNull
+    T originX(float x);
 
-    float getOriginY();
+    float originY();
 
-    void setOriginY(float y);
+    @Contract("_ -> this")
+    @NotNull
+    T originY(float y);
 
-    float getOriginZ();
+    float originZ();
 
-    void setOriginZ(float z);
+    @Contract("_ -> this")
+    @NotNull
+    T originZ(float z);
 
 }

@@ -4,8 +4,9 @@ import com.owen1212055.particlehelper.api.particle.compiled.CompiledParticle;
 import com.owen1212055.particlehelper.api.particle.compiled.simple.SimpleCompiledParticle;
 import com.owen1212055.particlehelper.api.particle.types.AbstractMultiParticle;
 import com.owen1212055.particlehelper.api.type.ParticleType;
+import org.jetbrains.annotations.NotNull;
 
-public class MultiEntityEffectParticle extends AbstractMultiParticle {
+public class MultiEntityEffectParticle extends AbstractMultiParticle<MultiEntityEffectParticle> {
 
     private float colorMultiplier;
 
@@ -13,16 +14,17 @@ public class MultiEntityEffectParticle extends AbstractMultiParticle {
         super(particleType);
     }
 
-    public float getColorMultiplier() {
+    public float colorMultiplier() {
         return colorMultiplier;
     }
 
-    public void setColorMultiplier(float colorMultiplier) {
+    public MultiEntityEffectParticle colorMultiplier(float colorMultiplier) {
         this.colorMultiplier = colorMultiplier;
+        return this;
     }
 
     @Override
-    public CompiledParticle compile() {
+    public @NotNull CompiledParticle compile() {
         SimpleCompiledParticle simpleCompiledParticle = new SimpleCompiledParticle(this);
         simpleCompiledParticle.speed = colorMultiplier;
 

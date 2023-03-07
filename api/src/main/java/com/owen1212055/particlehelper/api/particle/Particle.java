@@ -4,8 +4,10 @@ import com.owen1212055.particlehelper.api.particle.compiled.CompiledParticle;
 import com.owen1212055.particlehelper.api.type.ParticleType;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
 
-public interface Particle extends CompiledParticle {
+public interface Particle<T extends Particle<T>> extends CompiledParticle {
 
     /**
      * Gets the ParticleType this particle represents.
@@ -17,7 +19,7 @@ public interface Particle extends CompiledParticle {
      * Is this particle forcibly shown on the client?
      * @return is forcibly shown
      */
-    boolean shouldForceShow();
+    boolean forceShow();
 
     /**
      * Represents if a particle should be forcibly shown
@@ -25,17 +27,21 @@ public interface Particle extends CompiledParticle {
      * might have.
      * @param forceShow should be forcibly shown
      */
-    void forceShow(boolean forceShow);
+    @Contract("_ -> this")
+    @NotNull
+    T forceShow(boolean forceShow);
 
     /**
      * Compiles an immutable version of this
      * particle which can be sent to players.
-     *
+     * <p>
      * This is a way to send the same particle to many players
      * in an optimized manner, where certain logic like sharing
      * the packet can be done.
+     *
      * @return compiled immutable particle
      */
+    @NotNull
     CompiledParticle compile();
 
     /**

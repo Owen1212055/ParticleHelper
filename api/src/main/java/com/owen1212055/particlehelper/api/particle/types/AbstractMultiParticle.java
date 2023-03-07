@@ -1,14 +1,16 @@
 package com.owen1212055.particlehelper.api.particle.types;
 
 import com.owen1212055.particlehelper.api.particle.MultiParticle;
+import com.owen1212055.particlehelper.api.particle.Particle;
 import com.owen1212055.particlehelper.api.type.ParticleType;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * The base implementation for a multi particle.
  *
  * Multi particles are always sent with a fixes amount, where there is an offset that represents the X/Y/Z.
  */
-public abstract class AbstractMultiParticle implements MultiParticle {
+public abstract class AbstractMultiParticle<T extends Particle<T>> implements MultiParticle<T> {
 
     protected final ParticleType<?, ?> particleType;
 
@@ -24,52 +26,63 @@ public abstract class AbstractMultiParticle implements MultiParticle {
     }
 
     @Override
-    public int getCount() {
+    public int count() {
         return this.count;
     }
 
+    @SuppressWarnings("unchecked")
     @Override
-    public void setCount(int count) {
+    public @NotNull T count(int count) {
         this.count = count;
+        return (T) this;
     }
 
     @Override
-    public float getXOffset() {
+    public float xOffset() {
         return this.xOffset;
     }
 
+    @SuppressWarnings("unchecked")
     @Override
-    public void setXOffset(float offset) {
+    public @NotNull T xOffset(float offset) {
         this.xOffset = offset;
+        return (T) this;
     }
 
     @Override
-    public float getYOffset() {
+    public float yOffset() {
         return this.yOffset;
     }
 
+    @SuppressWarnings("unchecked")
     @Override
-    public void setYOffset(float offset) {
+    public @NotNull T yOffset(float offset) {
         this.yOffset = offset;
+        return (T) this;
     }
 
     @Override
-    public float getZOffset() {
+    public float zOffset() {
         return this.zOffset;
     }
 
+    @SuppressWarnings("unchecked")
     @Override
-    public void setZOffset(float zOffset) {
+    public @NotNull T zOffset(float zOffset) {
         this.zOffset = zOffset;
+        return (T) this;
     }
 
+    @SuppressWarnings("unchecked")
+    @NotNull
     @Override
-    public void forceShow(boolean forceSend) {
+    public T forceShow(boolean forceSend) {
         this.alwaysSend = forceSend;
+        return (T) this;
     }
 
     @Override
-    public boolean shouldForceShow() {
+    public boolean forceShow() {
         return this.alwaysSend;
     }
 

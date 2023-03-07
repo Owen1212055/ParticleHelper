@@ -5,10 +5,10 @@ import com.owen1212055.particlehelper.api.particle.compiled.CompiledParticle;
 import com.owen1212055.particlehelper.api.particle.compiled.simple.ParticleChannel;
 import com.owen1212055.particlehelper.api.particle.compiled.simple.SimpleCompiledParticle;
 import com.owen1212055.particlehelper.api.type.ParticleType;
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.ApiStatus;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.lang.invoke.MethodHandle;
@@ -19,43 +19,79 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import static com.owen1212055.particlehelper.api.type.Particles.*;
-import static com.owen1212055.particlehelper.api.type.Particles.SONIC_BOOM;
 
 public final class ParticleHelper {
 
     private static final Logger LOGGER = Logger.getLogger("ParticleHelper");
 
     private static ParticleChannel ACTIVE_PARTICLE_CHANNEL = null;
+    private static boolean isBukkit = false;
+
+    /**
+     * Bundles compiled particle effects into one, allowing for multiple
+     * particles to be sent within the same packet to players. Useful for
+     * grouped particles.
+     *
+     * @param particles compiled particles
+     * @return channel
+     */
+    @NotNull
+    public static CompiledParticle bundleParticles(CompiledParticle... particles) {
+        return ACTIVE_PARTICLE_CHANNEL.getGroupedSender(particles);
+    }
 
     /**
      * Attempts to setup the particle channel for sending
      * particles to players.
-     *
+     * <p>
      * This will first try to use NMS, where if that fails the bukkit api
      * will be used instead.
      */
+    @SuppressWarnings("unchecked")
     public static void bootstrapParticleChannel() {
         if (ACTIVE_PARTICLE_CHANNEL != null) {
             return;
         }
 
         try {
-            MethodType type = MethodType.methodType(BiConsumer.class, CompiledParticle.class);
-            MethodHandle handle = MethodHandles.lookup().findStatic(Class.forName("com.owen1212055.particlehelper.nms.ParticleHelper"), "getParticleSender", type);
+            MethodHandle senderHandle = MethodHandles.lookup().findStatic(Class.forName("com.owen1212055.particlehelper.nms.ParticleHelper"), "getParticleSender", MethodType.methodType(BiConsumer.class, CompiledParticle.class));
 
-            ACTIVE_PARTICLE_CHANNEL = compiledParticle -> {
-                try {
-                    return (BiConsumer<Player, Location>) handle.invoke(compiledParticle);
-                } catch (ReflectiveOperationException e) {
-                    LOGGER.log(Level.WARNING, "Failed to fetch certain NMS classes! Using bukkit API (less performant & ignores forceSend).", e);
-                    // Reassign cached + main channel.
-                    bukkitBind();
-                    compiledParticle.compiledSender = ACTIVE_PARTICLE_CHANNEL.getSender(compiledParticle);
+            MethodHandle groupedSender = MethodHandles.lookup().findStatic(Class.forName("com.owen1212055.particlehelper.nms.ParticleHelper"), "getGroupedSender", MethodType.methodType(CompiledParticle.class, CompiledParticle[].class));
+            ACTIVE_PARTICLE_CHANNEL = new ParticleChannel() {
+                @Override
+                public BiConsumer<Player, Location> getSender(SimpleCompiledParticle compiledParticle) {
+                    try {
+                        return (BiConsumer<Player, Location>) senderHandle.invoke(compiledParticle);
+                    } catch (Throwable e) {
+                        if (!isBukkit) {
+                            LOGGER.log(Level.WARNING, "Failed to fetch certain NMS classes! Using bukkit API (less performant & ignores forceSend).", e);
+                            // Reassign cached + main channel.
+                            bukkitBind();
+                            compiledParticle.compiledSender = ACTIVE_PARTICLE_CHANNEL.getSender(compiledParticle);
 
-                    // Reassigned, so now send via bucket.
-                    return compiledParticle.compiledSender;
-                } catch (Throwable e) {
-                    throw new RuntimeException(e);
+                            // Reassigned, so now send via bucket.
+                            return compiledParticle.compiledSender;
+                        } else {
+                            throw new RuntimeException(e);
+                        }
+                    }
+                }
+
+                @Override
+                public CompiledParticle getGroupedSender(CompiledParticle[] particles) {
+                    try {
+                        return (CompiledParticle) groupedSender.invoke((CompiledParticle[]) particles);
+                    } catch (Throwable e) {
+                        if (!isBukkit) {
+                            LOGGER.log(Level.WARNING, "Failed to fetch certain NMS classes! Using bukkit API (less performant & ignores forceSend).", e);
+                            // Reassign cached + main channel.
+                            bukkitBind();
+                            // Reassigned, so now send via bucket.
+                            return ACTIVE_PARTICLE_CHANNEL.getGroupedSender(particles);
+                        }  else {
+                            throw new RuntimeException(e);
+                        }
+                    }
                 }
             };
         } catch (Exception e) {
@@ -76,20 +112,32 @@ public final class ParticleHelper {
 
     // Attempt to bind if this is shaded into a jar for example
     private static void bukkitBind() {
-        ACTIVE_PARTICLE_CHANNEL = particle -> (player, location) -> {
-            // Unsupported: force send
-            player.spawnParticle(
-                    toBukkit(particle.particle),
-                    location.getX(),
-                    location.getY(),
-                    location.getZ(),
-                    particle.count,
-                    particle.offsetX,
-                    particle.offsetY,
-                    particle.offsetZ,
-                    particle.speed,
-                    particle.data
-            );
+        isBukkit = true;
+        ACTIVE_PARTICLE_CHANNEL = new ParticleChannel() {
+            @Override
+            public BiConsumer<Player, Location> getSender(SimpleCompiledParticle particle) {
+                return (player, location) -> player.spawnParticle(
+                        toBukkit(particle.particle),
+                        location.getX(),
+                        location.getY(),
+                        location.getZ(),
+                        particle.count,
+                        particle.offsetX,
+                        particle.offsetY,
+                        particle.offsetZ,
+                        particle.speed,
+                        particle.data
+                );
+            }
+
+            @Override
+            public CompiledParticle getGroupedSender(CompiledParticle... particles) {
+                return (player, location) -> {
+                    for (CompiledParticle compiledParticle : particles) {
+                        compiledParticle.send(player, location);
+                    }
+                };
+            }
         };
     }
 

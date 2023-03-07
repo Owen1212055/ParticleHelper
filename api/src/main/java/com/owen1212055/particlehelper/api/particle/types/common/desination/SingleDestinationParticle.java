@@ -5,8 +5,9 @@ import com.owen1212055.particlehelper.api.particle.compiled.simple.SimpleCompile
 import com.owen1212055.particlehelper.api.particle.types.AbstractSingleParticle;
 import com.owen1212055.particlehelper.api.particle.types.DestinationParticle;
 import com.owen1212055.particlehelper.api.type.ParticleType;
+import org.jetbrains.annotations.NotNull;
 
-public class SingleDestinationParticle extends AbstractSingleParticle implements DestinationParticle {
+public class SingleDestinationParticle extends AbstractSingleParticle<SingleDestinationParticle> implements DestinationParticle<SingleDestinationParticle> {
 
     protected float xFrom;
     protected float yFrom;
@@ -17,37 +18,40 @@ public class SingleDestinationParticle extends AbstractSingleParticle implements
     }
 
     @Override
-    public float getOriginX() {
+    public float originX() {
         return this.xFrom;
     }
 
     @Override
-    public void setOriginX(float x) {
+    public @NotNull SingleDestinationParticle originX(float x) {
         this.xFrom = x;
+        return this;
     }
 
     @Override
-    public float getOriginY() {
+    public float originY() {
         return this.yFrom;
     }
 
     @Override
-    public void setOriginY(float y) {
+    public @NotNull SingleDestinationParticle originY(float y) {
         this.yFrom = y;
+        return this;
     }
 
     @Override
-    public float getOriginZ() {
+    public float originZ() {
         return this.zFrom;
     }
 
     @Override
-    public void setOriginZ(float z) {
+    public @NotNull SingleDestinationParticle originZ(float z) {
         this.zFrom = z;
+        return this;
     }
 
     @Override
-    public CompiledParticle compile() {
+    public @NotNull CompiledParticle compile() {
         SimpleCompiledParticle simpleCompiledParticle = new SimpleCompiledParticle(this);
         simpleCompiledParticle.offsetX = this.xFrom;
         simpleCompiledParticle.offsetY = this.yFrom;

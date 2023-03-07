@@ -1,5 +1,5 @@
 name: ParticleHelper
-version: '1.0'
+version: '1.3'
 main: com.owen1212055.particlehelper.plugin.Plugin
-api-version: 1.18
+api-version: 1.19
 authors: [ Owen1212055 ]

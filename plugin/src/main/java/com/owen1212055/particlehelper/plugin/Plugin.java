@@ -1,5 +1,6 @@
 package com.owen1212055.particlehelper.plugin;
 
+import com.owen1212055.particlehelper.api.particle.compiled.CompiledParticle;
 import com.owen1212055.particlehelper.api.particle.compiled.simple.ParticleChannel;
 import com.owen1212055.particlehelper.api.particle.compiled.simple.SimpleCompiledParticle;
 import com.owen1212055.particlehelper.nms.ParticleHelper;
@@ -23,4 +24,10 @@ public class Plugin extends JavaPlugin implements Listener, ParticleChannel {
     public BiConsumer<Player, Location> getSender(SimpleCompiledParticle particle) {
         return ParticleHelper.getParticleSender(particle);
     }
+
+    @Override
+    public CompiledParticle getGroupedSender(CompiledParticle... compiledParticles) {
+        return ParticleHelper.getGroupedSender(compiledParticles);
+    }
+
 }

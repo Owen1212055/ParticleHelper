@@ -1,11 +1,11 @@
 plugins {
     java
     id("maven-publish")
-    id("io.papermc.paperweight.userdev") version "1.3.5" apply false
+    id("io.papermc.paperweight.userdev") version "1.5.2" apply false
 }
 
 group = "com.owen1212055"
-version = "1.2.0-SNAPSHOT"
+version = "1.3.0-SNAPSHOT"
 
 repositories {
     mavenCentral()

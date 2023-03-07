@@ -10,7 +10,7 @@ import org.bukkit.Material;
 import org.bukkit.block.data.BlockData;
 import org.jetbrains.annotations.NotNull;
 
-public class MultiBlockDataParticle extends AbstractMultiParticle implements BlockDataParticle {
+public class MultiBlockDataParticle extends AbstractMultiParticle<MultiBlockDataParticle> implements BlockDataParticle<MultiBlockDataParticle> {
 
     private BlockData blockData = Bukkit.createBlockData(Material.STONE);
 
@@ -19,17 +19,19 @@ public class MultiBlockDataParticle extends AbstractMultiParticle implements Blo
     }
 
     @Override
-    public @NotNull BlockData getBlockData() {
+    public @NotNull BlockData blockData() {
         return this.blockData;
     }
 
+    @NotNull
     @Override
-    public void setBlockData(@NotNull BlockData data) {
-        this.blockData = data;
+    public MultiBlockDataParticle blockData(@NotNull BlockData blockData) {
+        this.blockData = blockData;
+        return this;
     }
 
     @Override
-    public CompiledParticle compile() {
+    public @NotNull CompiledParticle compile() {
         SimpleCompiledParticle simpleCompiledParticle = new SimpleCompiledParticle(this);
         simpleCompiledParticle.data = blockData;
 

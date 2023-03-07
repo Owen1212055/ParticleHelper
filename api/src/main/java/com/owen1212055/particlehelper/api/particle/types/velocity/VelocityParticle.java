@@ -1,25 +1,29 @@
 package com.owen1212055.particlehelper.api.particle.types.velocity;
 
 import com.owen1212055.particlehelper.api.particle.Particle;
+import org.jetbrains.annotations.Contract;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * Represents a particle which can have its entire
  * velocity customized.
  */
-public interface VelocityParticle extends Particle, YComponentVelocityParticle {
+public interface VelocityParticle<T extends Particle<T>> extends Particle<T>, YComponentVelocityParticle<T> {
 
-    float getVelocityX();
+    float velocityX();
 
-    void setVelocityX(float xVelocity);
-
-    @Override
-    float getVelocityY();
+    @Contract("_ -> this")
+    @NotNull T velocityX(float xVelocity);
 
     @Override
-    void setVelocityY(float yVelocity);
+    float velocityY();
 
-    float getVelocityZ();
+    @Override
+    @NotNull T velocityY(float yVelocity);
 
-    void setVelocityZ(float zVelocity);
+    float velocityZ();
+
+    @Contract("_ -> this")
+    @NotNull T velocityZ(float zVelocity);
 
 }
