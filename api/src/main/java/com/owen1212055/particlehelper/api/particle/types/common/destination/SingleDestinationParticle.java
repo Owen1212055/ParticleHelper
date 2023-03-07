@@ -1,4 +1,4 @@
-package com.owen1212055.particlehelper.api.particle.types.common.desination;
+package com.owen1212055.particlehelper.api.particle.types.common.destination;
 
 import com.owen1212055.particlehelper.api.particle.compiled.CompiledParticle;
 import com.owen1212055.particlehelper.api.particle.compiled.simple.SimpleCompiledParticle;

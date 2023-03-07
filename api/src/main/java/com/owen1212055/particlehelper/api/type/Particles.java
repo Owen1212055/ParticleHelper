@@ -1,19 +1,14 @@
 package com.owen1212055.particlehelper.api.type;
 
 import com.owen1212055.particlehelper.api.particle.Particle;
-import com.owen1212055.particlehelper.api.particle.types.BlockDataParticle;
-import com.owen1212055.particlehelper.api.particle.types.ColorableParticle;
-import com.owen1212055.particlehelper.api.particle.types.DestinationParticle;
-import com.owen1212055.particlehelper.api.particle.types.SizeableParticle;
 import com.owen1212055.particlehelper.api.particle.types.common.SimpleMultiParticle;
 import com.owen1212055.particlehelper.api.particle.types.common.SimpleSingleParticle;
 import com.owen1212055.particlehelper.api.particle.types.common.blockdata.MultiBlockDataParticle;
 import com.owen1212055.particlehelper.api.particle.types.common.blockdata.SingleBlockDataParticle;
-import com.owen1212055.particlehelper.api.particle.types.common.desination.SingleDestinationParticle;
+import com.owen1212055.particlehelper.api.particle.types.common.destination.SingleDestinationParticle;
 import com.owen1212055.particlehelper.api.particle.types.common.size.MultiSizeParticle;
 import com.owen1212055.particlehelper.api.particle.types.common.size.SingleSizeParticle;
 import com.owen1212055.particlehelper.api.particle.types.common.velocity.MultiSpeedModifiableParticle;
-import com.owen1212055.particlehelper.api.particle.types.common.velocity.MultiSpeedModifiableParticleImpl;
 import com.owen1212055.particlehelper.api.particle.types.common.velocity.ReducedMomentumParticle;
 import com.owen1212055.particlehelper.api.particle.types.common.velocity.SingleRisingParticle;
 import com.owen1212055.particlehelper.api.particle.types.common.velocity.VelocityParticleImpl;
@@ -33,7 +28,7 @@ import com.owen1212055.particlehelper.api.particle.types.shriek.MultiShriekParti
 import com.owen1212055.particlehelper.api.particle.types.shriek.SingleShriekParticle;
 import com.owen1212055.particlehelper.api.particle.types.vibration.MultiVibrationParticle;
 import com.owen1212055.particlehelper.api.particle.types.vibration.SingleVibrationParticle;
-import com.owen1212055.particlehelper.api.particle.types.vibration.VibrationParticle;
+
 import java.util.function.Function;
 import org.bukkit.NamespacedKey;
 import org.jetbrains.annotations.Nullable;
