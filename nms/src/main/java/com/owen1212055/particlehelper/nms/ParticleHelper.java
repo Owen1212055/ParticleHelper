@@ -10,9 +10,9 @@ import net.minecraft.resources.ResourceKey;
 import org.bukkit.Location;
 import org.bukkit.NamespacedKey;
 import org.bukkit.Particle;
-import org.bukkit.craftbukkit.v1_19_R2.CraftParticle;
-import org.bukkit.craftbukkit.v1_19_R2.entity.CraftPlayer;
-import org.bukkit.craftbukkit.v1_19_R2.util.CraftNamespacedKey;
+import org.bukkit.craftbukkit.v1_19_R3.CraftParticle;
+import org.bukkit.craftbukkit.v1_19_R3.entity.CraftPlayer;
+import org.bukkit.craftbukkit.v1_19_R3.util.CraftNamespacedKey;
 import org.bukkit.entity.Player;
 
 import java.util.HashMap;
@@ -26,7 +26,7 @@ public class ParticleHelper {
     /*
     Iterate over the Minecraft particles to map it to the bukkit api equivalents.
      */
-    private static final Map<NamespacedKey, Particle> BUKKIT_MAP = new HashMap<>();
+    static final Map<NamespacedKey, Particle> BUKKIT_MAP = new HashMap<>();
 
     static {
         Registry<net.minecraft.core.particles.ParticleType<?>> particleTypes = BuiltInRegistries.PARTICLE_TYPE;
@@ -35,19 +35,26 @@ public class ParticleHelper {
         }
     }
 
-    // TODO: 1.19.4
     public static CompiledParticle getGroupedSender(CompiledParticle... simpleCompiledParticles) {
-        return (player, location) -> {
-            for (CompiledParticle compiledParticle : simpleCompiledParticles) {
-                compiledParticle.send(player, location);
+        // This logic is responsible for unwrapping builders
+        CompiledParticle[] particles = new CompiledParticle[simpleCompiledParticles.length];
+        for (int i = 0; i < simpleCompiledParticles.length; i++) {
+            CompiledParticle compiledParticle = simpleCompiledParticles[i];
+
+            if (compiledParticle instanceof com.owen1212055.particlehelper.api.particle.Particle<?> particle) {
+                compiledParticle = particle.compile(); // Compile particle builders
             }
-        };
+
+            particles[i] = compiledParticle;
+        }
+
+        return new CachedBundledSender(particles);
     }
 
     public static BiConsumer<Player, Location> getParticleSender(CompiledParticle compiledParticle) {
         SimpleCompiledParticle compiled;
         if (!(compiledParticle instanceof SimpleCompiledParticle)) {
-            throw new UnsupportedOperationException();
+            throw new UnsupportedOperationException("Got instance of: " + compiledParticle);
         } else {
             compiled = (SimpleCompiledParticle) compiledParticle;
         }
@@ -73,15 +80,19 @@ public class ParticleHelper {
                 if (cached != null && cached.getX() == location.getX() && cached.getY() == location.getY() && cached.getZ() == location.getZ()) {
                     packet = cached;
                 } else {
-                    packet = new ClientboundLevelParticlesPacket(nmsParticle,
-                            compiled.longDistance, location.getX(), location.getY(), location.getZ(),
-                            compiled.offsetX, compiled.offsetY, compiled.offsetZ, compiled.speed, compiled.count);
+                    packet = createPacket(nmsParticle, location, compiled);
                     cached = packet;
                 }
 
                 ((CraftPlayer) player).getHandle().connection.send(packet);
             }
         };
+    }
+
+    public static ClientboundLevelParticlesPacket createPacket(ParticleOptions nmsParticle, Location location, SimpleCompiledParticle compiled) {
+        return new ClientboundLevelParticlesPacket(nmsParticle,
+                compiled.longDistance, location.getX(), location.getY(), location.getZ(),
+                compiled.offsetX, compiled.offsetY, compiled.offsetZ, compiled.speed, compiled.count);
     }
 
 }

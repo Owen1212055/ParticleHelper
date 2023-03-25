@@ -31,10 +31,13 @@ public final class ParticleHelper {
      * Bundles compiled particle effects into one, allowing for multiple
      * particles to be sent within the same packet to players. Useful for
      * grouped particles.
+     * <p>
+     * May be changed in the future.
      *
      * @param particles compiled particles
      * @return channel
      */
+    @ApiStatus.Experimental
     @NotNull
     public static CompiledParticle bundleParticles(CompiledParticle... particles) {
         return ACTIVE_PARTICLE_CHANNEL.getGroupedSender(particles);
@@ -170,6 +173,9 @@ public final class ParticleHelper {
         if (particle == PORTAL) return org.bukkit.Particle.PORTAL;
         if (particle == ENCHANT) return org.bukkit.Particle.ENCHANTMENT_TABLE;
         if (particle == FLAME) return org.bukkit.Particle.FLAME;
+        if (particle == DRIPPING_CHERRY_LEAVES) return org.bukkit.Particle.DRIPPING_CHERRY_LEAVES;
+        if (particle == FALLING_CHERRY_LEAVES) return org.bukkit.Particle.FALLING_CHERRY_LEAVES;
+        if (particle == LANDING_CHERRY_LEAVES) return org.bukkit.Particle.LANDING_CHERRY_LEAVES;
         if (particle == LAVA) return org.bukkit.Particle.LAVA;
         if (particle == CLOUD) return org.bukkit.Particle.CLOUD;
         if (particle == DUST) return org.bukkit.Particle.REDSTONE;

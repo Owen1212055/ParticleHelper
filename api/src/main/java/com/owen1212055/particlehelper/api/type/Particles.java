@@ -82,6 +82,9 @@ public interface Particles {
     MoveableParticle FIREWORK = ofMoveable("firework");
     MoveableParticle FISHING = ofMoveable("fishing");
     MoveableParticle FLAME = ofMoveable("flame");
+    StaticParticle DRIPPING_CHERRY_LEAVES = ofStatic("dripping_cherry_leaves");
+    StaticParticle FALLING_CHERRY_LEAVES = ofStatic("falling_cherry_leaves");
+    StaticParticle LANDING_CHERRY_LEAVES = ofStatic("landing_cherry_leaves");
     StaticParticle FLASH = ofStatic("flash");
     ParticleType<ReducedMomentumParticle, MultiSpeedModifiableParticle> GLOW = of("glow", ReducedMomentumParticle::new, MultiSpeedModifiableParticle::new);
     MoveableParticle GLOW_SQUID_INK = ofMoveable("glow_squid_ink");
