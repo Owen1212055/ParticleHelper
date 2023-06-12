@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "com.owen1212055"
-version = "1.3.0-SNAPSHOT"
+version = "1.4.0-SNAPSHOT"
 
 repositories {
     mavenCentral()

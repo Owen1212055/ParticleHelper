@@ -6,6 +6,7 @@ import com.owen1212055.particlehelper.api.particle.compiled.simple.ParticleChann
 import com.owen1212055.particlehelper.api.particle.compiled.simple.SimpleCompiledParticle;
 import com.owen1212055.particlehelper.api.type.ParticleType;
 import org.bukkit.Location;
+import org.bukkit.Particle;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.ApiStatus;
 import org.jetbrains.annotations.NotNull;
@@ -160,6 +161,7 @@ public final class ParticleHelper {
         if (particle == SMOKE) return org.bukkit.Particle.SMOKE_NORMAL;
         if (particle == LARGE_SMOKE) return org.bukkit.Particle.SMOKE_LARGE;
         if (particle == EFFECT) return org.bukkit.Particle.SPELL;
+        if (particle == EGG_CRACK) return org.bukkit.Particle.EGG_CRACK;
         if (particle == INSTANT_EFFECT) return org.bukkit.Particle.SPELL_INSTANT;
         if (particle == ENTITY_EFFECT) return org.bukkit.Particle.SPELL_MOB;
         if (particle == AMBIENT_ENTITY_EFFECT) return org.bukkit.Particle.SPELL_MOB_AMBIENT;
@@ -173,9 +175,7 @@ public final class ParticleHelper {
         if (particle == PORTAL) return org.bukkit.Particle.PORTAL;
         if (particle == ENCHANT) return org.bukkit.Particle.ENCHANTMENT_TABLE;
         if (particle == FLAME) return org.bukkit.Particle.FLAME;
-        if (particle == DRIPPING_CHERRY_LEAVES) return org.bukkit.Particle.DRIPPING_CHERRY_LEAVES;
-        if (particle == FALLING_CHERRY_LEAVES) return org.bukkit.Particle.FALLING_CHERRY_LEAVES;
-        if (particle == LANDING_CHERRY_LEAVES) return org.bukkit.Particle.LANDING_CHERRY_LEAVES;
+        if (particle == CHERRY_LEAVES) return Particle.CHERRY_LEAVES;
         if (particle == LAVA) return org.bukkit.Particle.LAVA;
         if (particle == CLOUD) return org.bukkit.Particle.CLOUD;
         if (particle == DUST) return org.bukkit.Particle.REDSTONE;

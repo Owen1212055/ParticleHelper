@@ -9,7 +9,7 @@ repositories {
    maven("https://repo.bytecode.space/repository/maven-public/")
 }
 dependencies {
-    implementation("com.owen1212055:particlehelper:1.3.0-SNAPSHOT")
+    implementation("com.owen1212055:particlehelper:1.4.0-SNAPSHOT")
 }
 ```
 

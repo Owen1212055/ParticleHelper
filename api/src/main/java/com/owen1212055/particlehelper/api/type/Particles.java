@@ -62,6 +62,7 @@ public interface Particles {
     ParticleType<SingleDustParticle, MultiDustParticle> DUST = of("dust", SingleDustParticle::new, MultiDustParticle::new);
     ParticleType<SingleDustTransitionParticle, MultiDustTransitionParticle> DUST_COLOR_TRANSITION = of("dust_color_transition", SingleDustTransitionParticle::new, MultiDustTransitionParticle::new);
     ParticleType<ReducedMomentumParticle, MultiSpeedModifiableParticle> EFFECT = of("effect", ReducedMomentumParticle::new, MultiSpeedModifiableParticle::new);
+    MoveableParticle EGG_CRACK = ofMoveable("egg_crack");
     StaticParticle ELDER_GUARDIAN = ofStatic("elder_guardian");
     MoveableParticle ELECTRIC_SPARK = ofMoveable("electric_spark");
     ParticleType<SingleDestinationParticle, MultiSpeedModifiableParticle> ENCHANT = of("enchant", SingleDestinationParticle::new, MultiSpeedModifiableParticle::new);
@@ -81,11 +82,9 @@ public interface Particles {
     StaticParticle FALLING_WATER = ofStatic("falling_water");
     MoveableParticle FIREWORK = ofMoveable("firework");
     MoveableParticle FISHING = ofMoveable("fishing");
-    MoveableParticle FLAME = ofMoveable("flame");
-    StaticParticle DRIPPING_CHERRY_LEAVES = ofStatic("dripping_cherry_leaves");
-    StaticParticle FALLING_CHERRY_LEAVES = ofStatic("falling_cherry_leaves");
-    StaticParticle LANDING_CHERRY_LEAVES = ofStatic("landing_cherry_leaves");
     StaticParticle FLASH = ofStatic("flash");
+    MoveableParticle FLAME = ofMoveable("flame");
+    StaticParticle CHERRY_LEAVES = ofStatic("cherry_leaves");
     ParticleType<ReducedMomentumParticle, MultiSpeedModifiableParticle> GLOW = of("glow", ReducedMomentumParticle::new, MultiSpeedModifiableParticle::new);
     MoveableParticle GLOW_SQUID_INK = ofMoveable("glow_squid_ink");
     MoveableParticle HAPPY_VILLAGER = ofMoveable("happy_villager");
