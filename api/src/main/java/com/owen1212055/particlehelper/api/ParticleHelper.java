@@ -1,18 +1,13 @@
 package com.owen1212055.particlehelper.api;
 
 
-import com.owen1212055.particlehelper.api.particle.compiled.CompiledParticle;
-import com.owen1212055.particlehelper.api.particle.compiled.simple.ParticleChannel;
-import com.owen1212055.particlehelper.api.type.ParticleType;
-import org.bukkit.Particle;
-import org.bukkit.Registry;
-import org.jetbrains.annotations.ApiStatus;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import com.owen1212055.particlehelper.api.particle.compiled.*;
+import com.owen1212055.particlehelper.api.particle.compiled.simple.*;
+import com.owen1212055.particlehelper.api.type.*;
+import org.bukkit.*;
+import org.jetbrains.annotations.*;
 
-import java.util.logging.Logger;
-
-import static com.owen1212055.particlehelper.api.type.Particles.*;
+import java.util.logging.*;
 
 public final class ParticleHelper {
 

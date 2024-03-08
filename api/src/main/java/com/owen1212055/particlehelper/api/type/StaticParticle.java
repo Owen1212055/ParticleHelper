@@ -1,11 +1,11 @@
 package com.owen1212055.particlehelper.api.type;
 
-import com.owen1212055.particlehelper.api.particle.MultiParticle;
 import com.owen1212055.particlehelper.api.particle.Particle;
-import org.bukkit.NamespacedKey;
-import org.jetbrains.annotations.NotNull;
+import com.owen1212055.particlehelper.api.particle.*;
+import org.bukkit.*;
+import org.jetbrains.annotations.*;
 
-import java.util.function.Function;
+import java.util.function.*;
 
 public interface StaticParticle extends ParticleType<Particle<?>, MultiParticle<?>> {
 

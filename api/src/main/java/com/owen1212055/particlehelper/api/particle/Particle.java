@@ -1,11 +1,10 @@
 package com.owen1212055.particlehelper.api.particle;
 
-import com.owen1212055.particlehelper.api.particle.compiled.CompiledParticle;
-import com.owen1212055.particlehelper.api.type.ParticleType;
-import org.bukkit.Location;
-import org.bukkit.entity.Player;
-import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
+import com.owen1212055.particlehelper.api.particle.compiled.*;
+import com.owen1212055.particlehelper.api.type.*;
+import org.bukkit.*;
+import org.bukkit.entity.*;
+import org.jetbrains.annotations.*;
 
 public interface Particle<T extends Particle<T>> extends CompiledParticle {
 

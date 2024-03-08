@@ -1,21 +1,17 @@
 package com.owen1212055.particlehelper.nms;
 
-import com.owen1212055.particlehelper.api.particle.compiled.CompiledParticle;
-import com.owen1212055.particlehelper.api.particle.compiled.simple.SimpleCompiledParticle;
+import com.owen1212055.particlehelper.api.particle.compiled.*;
+import com.owen1212055.particlehelper.api.particle.compiled.simple.*;
 import net.minecraft.core.Registry;
-import net.minecraft.core.particles.ParticleOptions;
-import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.network.protocol.game.ClientboundLevelParticlesPacket;
-import net.minecraft.resources.ResourceKey;
-import org.bukkit.Location;
-import org.bukkit.NamespacedKey;
-import org.bukkit.Particle;
-import org.bukkit.craftbukkit.v1_20_R3.CraftParticle;
-import org.bukkit.craftbukkit.v1_20_R3.util.CraftNamespacedKey;
-import org.bukkit.entity.Player;
+import net.minecraft.core.particles.*;
+import net.minecraft.core.registries.*;
+import net.minecraft.network.protocol.game.*;
+import net.minecraft.resources.*;
+import org.bukkit.*;
+import org.bukkit.craftbukkit.v1_20_R3.*;
+import org.bukkit.craftbukkit.v1_20_R3.util.*;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 @SuppressWarnings("unused")
 public class ParticleHelper {

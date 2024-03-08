@@ -1,13 +1,13 @@
 package com.owen1212055.particlehelper.api.particle.types.itemcrack;
 
-import com.owen1212055.particlehelper.api.particle.compiled.CompiledParticle;
-import com.owen1212055.particlehelper.api.particle.compiled.simple.SimpleCompiledParticle;
-import com.owen1212055.particlehelper.api.particle.types.ItemStackParticle;
-import com.owen1212055.particlehelper.api.particle.types.common.velocity.AbstractVelocityParticle;
-import com.owen1212055.particlehelper.api.type.ParticleType;
-import org.bukkit.Material;
-import org.bukkit.inventory.ItemStack;
-import org.jetbrains.annotations.NotNull;
+import com.owen1212055.particlehelper.api.particle.compiled.*;
+import com.owen1212055.particlehelper.api.particle.compiled.simple.*;
+import com.owen1212055.particlehelper.api.particle.types.*;
+import com.owen1212055.particlehelper.api.particle.types.common.velocity.*;
+import com.owen1212055.particlehelper.api.type.*;
+import org.bukkit.*;
+import org.bukkit.inventory.*;
+import org.jetbrains.annotations.*;
 
 public class SingleItemCrackParticle extends AbstractVelocityParticle<SingleItemCrackParticle> implements ItemStackParticle<SingleItemCrackParticle> {
 

@@ -1,11 +1,10 @@
 package com.owen1212055.particlehelper.api.particle.types.common.destination;
 
-import com.owen1212055.particlehelper.api.particle.compiled.CompiledParticle;
-import com.owen1212055.particlehelper.api.particle.compiled.simple.SimpleCompiledParticle;
-import com.owen1212055.particlehelper.api.particle.types.AbstractSingleParticle;
-import com.owen1212055.particlehelper.api.particle.types.DestinationParticle;
-import com.owen1212055.particlehelper.api.type.ParticleType;
-import org.jetbrains.annotations.NotNull;
+import com.owen1212055.particlehelper.api.particle.compiled.*;
+import com.owen1212055.particlehelper.api.particle.compiled.simple.*;
+import com.owen1212055.particlehelper.api.particle.types.*;
+import com.owen1212055.particlehelper.api.type.*;
+import org.jetbrains.annotations.*;
 
 public class SingleDestinationParticle extends AbstractSingleParticle<SingleDestinationParticle> implements DestinationParticle<SingleDestinationParticle> {
 

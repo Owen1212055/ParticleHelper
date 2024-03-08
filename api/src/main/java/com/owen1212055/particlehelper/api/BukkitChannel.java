@@ -1,10 +1,9 @@
 package com.owen1212055.particlehelper.api;
 
-import com.owen1212055.particlehelper.api.particle.compiled.CompiledParticle;
-import com.owen1212055.particlehelper.api.particle.compiled.simple.ParticleChannel;
-import com.owen1212055.particlehelper.api.particle.compiled.simple.SimpleCompiledParticle;
-import org.bukkit.Location;
-import org.bukkit.entity.Player;
+import com.owen1212055.particlehelper.api.particle.compiled.*;
+import com.owen1212055.particlehelper.api.particle.compiled.simple.*;
+import org.bukkit.*;
+import org.bukkit.entity.*;
 
 public class BukkitChannel implements ParticleChannel {
 

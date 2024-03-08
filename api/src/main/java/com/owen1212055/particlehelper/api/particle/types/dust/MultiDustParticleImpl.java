@@ -1,12 +1,12 @@
 package com.owen1212055.particlehelper.api.particle.types.dust;
 
 import com.owen1212055.particlehelper.api.particle.Particle;
-import com.owen1212055.particlehelper.api.particle.compiled.CompiledParticle;
-import com.owen1212055.particlehelper.api.particle.compiled.simple.SimpleCompiledParticle;
-import com.owen1212055.particlehelper.api.particle.types.common.velocity.MultiSpeedModifiableParticleImpl;
-import com.owen1212055.particlehelper.api.type.ParticleType;
-import org.bukkit.Color;
-import org.jetbrains.annotations.NotNull;
+import com.owen1212055.particlehelper.api.particle.compiled.*;
+import com.owen1212055.particlehelper.api.particle.compiled.simple.*;
+import com.owen1212055.particlehelper.api.particle.types.common.velocity.*;
+import com.owen1212055.particlehelper.api.type.*;
+import org.bukkit.*;
+import org.jetbrains.annotations.*;
 
 public abstract class MultiDustParticleImpl<T extends Particle<T>> extends MultiSpeedModifiableParticleImpl<T> implements DustParticle<T> {
 

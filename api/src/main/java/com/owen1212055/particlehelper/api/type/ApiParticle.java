@@ -1,10 +1,10 @@
 package com.owen1212055.particlehelper.api.type;
 
 import com.owen1212055.particlehelper.api.particle.Particle;
-import org.bukkit.NamespacedKey;
-import org.jetbrains.annotations.NotNull;
+import org.bukkit.*;
+import org.jetbrains.annotations.*;
 
-import java.util.function.Function;
+import java.util.function.*;
 
 record ApiParticle<S extends Particle<?>, M extends Particle<?>>(NamespacedKey key,
                                                            Function<ParticleType<S, M>, S> singleBuilder,

@@ -1,7 +1,7 @@
 package com.owen1212055.particlehelper.api.particle.compiled.simple;
 
-import com.owen1212055.particlehelper.api.particle.compiled.CompiledParticle;
-import org.jetbrains.annotations.ApiStatus;
+import com.owen1212055.particlehelper.api.particle.compiled.*;
+import org.jetbrains.annotations.*;
 
 /**
  * Internally used for sending simple compiled particles without using

@@ -1,8 +1,8 @@
 package com.owen1212055.particlehelper.api.particle.types;
 
-import com.owen1212055.particlehelper.api.particle.Particle;
-import com.owen1212055.particlehelper.api.type.ParticleType;
-import org.jetbrains.annotations.NotNull;
+import com.owen1212055.particlehelper.api.particle.*;
+import com.owen1212055.particlehelper.api.type.*;
+import org.jetbrains.annotations.*;
 
 public abstract class AbstractSingleParticle<T extends Particle<T>> implements Particle<T> {
 

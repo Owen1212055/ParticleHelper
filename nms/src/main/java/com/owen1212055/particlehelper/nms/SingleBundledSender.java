@@ -1,19 +1,11 @@
 package com.owen1212055.particlehelper.nms;
 
-import com.owen1212055.particlehelper.api.particle.compiled.CompiledParticle;
-import com.owen1212055.particlehelper.api.particle.compiled.simple.SimpleCompiledParticle;
-import net.minecraft.core.particles.ParticleOptions;
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.game.ClientGamePacketListener;
-import net.minecraft.network.protocol.game.ClientboundBundlePacket;
-import net.minecraft.network.protocol.game.ClientboundLevelParticlesPacket;
-import org.bukkit.Location;
-import org.bukkit.NamespacedKey;
-import org.bukkit.Particle;
-import org.bukkit.craftbukkit.v1_20_R3.CraftParticle;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.owen1212055.particlehelper.api.particle.compiled.*;
+import com.owen1212055.particlehelper.api.particle.compiled.simple.*;
+import net.minecraft.core.particles.*;
+import net.minecraft.network.protocol.game.*;
+import org.bukkit.*;
+import org.bukkit.craftbukkit.v1_20_R3.*;
 
 public class SingleBundledSender extends ParticleSender implements CompiledParticle {
 

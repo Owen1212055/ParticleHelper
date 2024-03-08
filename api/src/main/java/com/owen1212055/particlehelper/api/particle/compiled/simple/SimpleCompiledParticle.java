@@ -1,13 +1,13 @@
 package com.owen1212055.particlehelper.api.particle.compiled.simple;
 
-import com.owen1212055.particlehelper.api.ParticleHelper;
-import com.owen1212055.particlehelper.api.particle.MultiParticle;
-import com.owen1212055.particlehelper.api.particle.compiled.CompiledParticle;
-import com.owen1212055.particlehelper.api.particle.types.AbstractSingleParticle;
-import com.owen1212055.particlehelper.api.type.ParticleType;
-import org.bukkit.Location;
-import org.bukkit.entity.Player;
-import org.jetbrains.annotations.ApiStatus;
+import com.owen1212055.particlehelper.api.*;
+import com.owen1212055.particlehelper.api.particle.*;
+import com.owen1212055.particlehelper.api.particle.compiled.*;
+import com.owen1212055.particlehelper.api.particle.types.*;
+import com.owen1212055.particlehelper.api.type.*;
+import org.bukkit.*;
+import org.bukkit.entity.*;
+import org.jetbrains.annotations.*;
 
 @ApiStatus.Internal
 public class SimpleCompiledParticle implements CompiledParticle {

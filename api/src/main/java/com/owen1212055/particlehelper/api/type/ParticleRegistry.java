@@ -1,9 +1,9 @@
 package com.owen1212055.particlehelper.api.type;
 
-import java.util.HashMap;
-import java.util.Map;
-import org.bukkit.NamespacedKey;
-import org.jetbrains.annotations.Nullable;
+import org.bukkit.*;
+import org.jetbrains.annotations.*;
+
+import java.util.*;
 
 class ParticleRegistry {
 

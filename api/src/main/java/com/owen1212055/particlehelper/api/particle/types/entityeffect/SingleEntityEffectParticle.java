@@ -1,13 +1,12 @@
 package com.owen1212055.particlehelper.api.particle.types.entityeffect;
 
-import com.owen1212055.particlehelper.api.particle.compiled.CompiledParticle;
-import com.owen1212055.particlehelper.api.particle.compiled.simple.SimpleCompiledParticle;
-import com.owen1212055.particlehelper.api.particle.types.AbstractSingleParticle;
-import com.owen1212055.particlehelper.api.particle.types.ColorableParticle;
-import com.owen1212055.particlehelper.api.particle.types.common.velocity.SingleRisingParticle;
-import com.owen1212055.particlehelper.api.type.ParticleType;
-import org.bukkit.Color;
-import org.jetbrains.annotations.NotNull;
+import com.owen1212055.particlehelper.api.particle.compiled.*;
+import com.owen1212055.particlehelper.api.particle.compiled.simple.*;
+import com.owen1212055.particlehelper.api.particle.types.*;
+import com.owen1212055.particlehelper.api.particle.types.common.velocity.*;
+import com.owen1212055.particlehelper.api.type.*;
+import org.bukkit.*;
+import org.jetbrains.annotations.*;
 
 /**
  * It should be noted that these particle share the same properties as {@link SingleRisingParticle}

@@ -1,19 +1,9 @@
 package com.owen1212055.particlehelper.api;
 
-import com.owen1212055.particlehelper.api.particle.compiled.CompiledParticle;
-import com.owen1212055.particlehelper.api.particle.compiled.simple.ParticleChannel;
-import com.owen1212055.particlehelper.api.particle.compiled.simple.SimpleCompiledParticle;
-import org.bukkit.Location;
-import org.bukkit.entity.Player;
+import com.owen1212055.particlehelper.api.particle.compiled.*;
+import com.owen1212055.particlehelper.api.particle.compiled.simple.*;
 
-import java.lang.invoke.MethodHandle;
-import java.lang.invoke.MethodHandles;
-import java.lang.invoke.MethodType;
-import java.util.function.BiConsumer;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.lang.invoke.*;
 
 class NMSChannel implements ParticleChannel {
 

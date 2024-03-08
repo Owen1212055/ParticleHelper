@@ -1,12 +1,10 @@
 package com.owen1212055.particlehelper.api;
 
-import com.owen1212055.particlehelper.api.particle.compiled.CompiledParticle;
-import com.owen1212055.particlehelper.api.particle.compiled.simple.ParticleChannel;
-import com.owen1212055.particlehelper.api.particle.compiled.simple.SimpleCompiledParticle;
+import com.owen1212055.particlehelper.api.particle.compiled.*;
+import com.owen1212055.particlehelper.api.particle.compiled.simple.*;
 
-import java.util.function.Function;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.function.*;
+import java.util.logging.*;
 
 class WrappedSafetyNMSChannel implements ParticleChannel {
 

@@ -1,7 +1,6 @@
 package com.owen1212055.particlehelper.api.particle;
 
-import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.*;
 
 public interface MultiParticle<T extends Particle<T>> extends Particle<T> {
 

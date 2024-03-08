@@ -1,8 +1,8 @@
 package com.owen1212055.particlehelper.api.particle.compiled;
 
-import org.bukkit.Location;
-import org.bukkit.entity.Player;
-import org.jetbrains.annotations.ApiStatus;
+import org.bukkit.*;
+import org.bukkit.entity.*;
+import org.jetbrains.annotations.*;
 
 /**
  * A compiled particle is responsible for sending a

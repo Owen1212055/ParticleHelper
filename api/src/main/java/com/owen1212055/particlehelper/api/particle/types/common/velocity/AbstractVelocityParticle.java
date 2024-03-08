@@ -1,12 +1,12 @@
 package com.owen1212055.particlehelper.api.particle.types.common.velocity;
 
-import com.owen1212055.particlehelper.api.particle.Particle;
-import com.owen1212055.particlehelper.api.particle.compiled.CompiledParticle;
-import com.owen1212055.particlehelper.api.particle.compiled.simple.SimpleCompiledParticle;
-import com.owen1212055.particlehelper.api.particle.types.AbstractSingleParticle;
-import com.owen1212055.particlehelper.api.particle.types.velocity.VelocityParticle;
-import com.owen1212055.particlehelper.api.type.ParticleType;
-import org.jetbrains.annotations.NotNull;
+import com.owen1212055.particlehelper.api.particle.*;
+import com.owen1212055.particlehelper.api.particle.compiled.*;
+import com.owen1212055.particlehelper.api.particle.compiled.simple.*;
+import com.owen1212055.particlehelper.api.particle.types.*;
+import com.owen1212055.particlehelper.api.particle.types.velocity.*;
+import com.owen1212055.particlehelper.api.type.*;
+import org.jetbrains.annotations.*;
 
 public abstract class AbstractVelocityParticle<T extends Particle<T>> extends AbstractSingleParticle<T> implements VelocityParticle<T> {
 

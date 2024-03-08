@@ -1,12 +1,11 @@
 package com.owen1212055.particlehelper.api.particle.types.velocity;
 
-import com.owen1212055.particlehelper.api.particle.types.common.velocity.MultiSpeedModifiableParticle;
-import com.owen1212055.particlehelper.api.particle.types.common.velocity.AbstractVelocityParticle;
-import com.owen1212055.particlehelper.api.type.ParticleType;
-import org.bukkit.NamespacedKey;
-import org.jetbrains.annotations.NotNull;
+import com.owen1212055.particlehelper.api.particle.types.common.velocity.*;
+import com.owen1212055.particlehelper.api.type.*;
+import org.bukkit.*;
+import org.jetbrains.annotations.*;
 
-import java.util.function.Function;
+import java.util.function.*;
 
 public interface MoveableParticle extends ParticleType<SimpleVelocityParticle, MultiSpeedModifiableParticle> {
 

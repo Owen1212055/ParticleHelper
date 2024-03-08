@@ -1,15 +1,10 @@
 package com.owen1212055.particlehelper.nms;
 
-import com.owen1212055.particlehelper.api.particle.compiled.CompiledParticle;
-
-import net.minecraft.network.protocol.Packet;
-import net.minecraft.network.protocol.game.ClientboundBundlePacket;
-import org.bukkit.Location;
-import org.bukkit.craftbukkit.v1_20_R3.entity.CraftPlayer;
-import org.bukkit.entity.Player;
-
-import java.util.function.BiConsumer;
-import java.util.function.Consumer;
+import com.owen1212055.particlehelper.api.particle.compiled.*;
+import net.minecraft.network.protocol.*;
+import org.bukkit.*;
+import org.bukkit.craftbukkit.v1_20_R3.entity.*;
+import org.bukkit.entity.*;
 
 public abstract class ParticleSender implements CompiledParticle {
 

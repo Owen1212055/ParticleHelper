@@ -1,8 +1,7 @@
 package com.owen1212055.particlehelper.api.particle.types.velocity;
 
-import com.owen1212055.particlehelper.api.particle.Particle;
-import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
+import com.owen1212055.particlehelper.api.particle.*;
+import org.jetbrains.annotations.*;
 
 /**
  * Represents a particle which can only have

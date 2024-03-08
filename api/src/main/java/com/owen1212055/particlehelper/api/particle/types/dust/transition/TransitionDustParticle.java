@@ -1,10 +1,9 @@
 package com.owen1212055.particlehelper.api.particle.types.dust.transition;
 
 import com.owen1212055.particlehelper.api.particle.Particle;
-import com.owen1212055.particlehelper.api.particle.types.dust.DustParticle;
-import org.bukkit.Color;
-import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
+import com.owen1212055.particlehelper.api.particle.types.dust.*;
+import org.bukkit.*;
+import org.jetbrains.annotations.*;
 
 public interface TransitionDustParticle<T extends Particle<T>> extends DustParticle<T> {
 
