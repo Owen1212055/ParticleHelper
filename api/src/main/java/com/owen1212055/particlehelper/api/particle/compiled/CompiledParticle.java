@@ -17,4 +17,6 @@ import org.jetbrains.annotations.ApiStatus;
 public interface CompiledParticle {
 
     void send(Player player, Location location);
+
+    void sendToTrackingPlayers(Location location);
 }

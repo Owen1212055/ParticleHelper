@@ -2,13 +2,13 @@ package com.owen1212055.particlehelper.api.particle.types.dust;
 
 import com.owen1212055.particlehelper.api.particle.compiled.CompiledParticle;
 import com.owen1212055.particlehelper.api.particle.compiled.simple.SimpleCompiledParticle;
-import com.owen1212055.particlehelper.api.particle.types.common.velocity.VelocityParticleImpl;
+import com.owen1212055.particlehelper.api.particle.types.common.velocity.AbstractVelocityParticle;
 import com.owen1212055.particlehelper.api.type.ParticleType;
 import org.bukkit.Color;
 import org.bukkit.Particle;
 import org.jetbrains.annotations.NotNull;
 
-public abstract class SingleDustParticleImpl<T extends com.owen1212055.particlehelper.api.particle.Particle<T>> extends VelocityParticleImpl<T> implements DustParticle<T> {
+public abstract class SingleDustParticleImpl<T extends com.owen1212055.particlehelper.api.particle.Particle<T>> extends AbstractVelocityParticle<T> implements DustParticle<T> {
 
     protected Color color = Color.RED;
     protected float size;

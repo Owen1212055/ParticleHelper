@@ -3,11 +3,11 @@ package com.owen1212055.particlehelper.api.particle.types.sculkcharge;
 import com.owen1212055.particlehelper.api.particle.compiled.CompiledParticle;
 import com.owen1212055.particlehelper.api.particle.compiled.simple.SimpleCompiledParticle;
 import com.owen1212055.particlehelper.api.particle.types.RollableParticle;
-import com.owen1212055.particlehelper.api.particle.types.common.velocity.VelocityParticleImpl;
+import com.owen1212055.particlehelper.api.particle.types.common.velocity.AbstractVelocityParticle;
 import com.owen1212055.particlehelper.api.type.ParticleType;
 import org.jetbrains.annotations.NotNull;
 
-public class SingleSculkChargeParticle extends VelocityParticleImpl<SingleSculkChargeParticle> implements RollableParticle<SingleSculkChargeParticle> {
+public class SingleSculkChargeParticle extends AbstractVelocityParticle<SingleSculkChargeParticle> implements RollableParticle<SingleSculkChargeParticle> {
 
     private float roll;
 

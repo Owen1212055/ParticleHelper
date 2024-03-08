@@ -54,4 +54,9 @@ public interface Particle<T extends Particle<T>> extends CompiledParticle {
     default void send(Player player, Location location) {
         compile().send(player, location);
     }
+
+    @Override
+    default void sendToTrackingPlayers(org.bukkit.Location location) {
+        compile().sendToTrackingPlayers(location);
+    }
 }

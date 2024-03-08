@@ -9,23 +9,29 @@ import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.ApiStatus;
 
-import java.util.function.BiConsumer;
-
 @ApiStatus.Internal
 public class SimpleCompiledParticle implements CompiledParticle {
 
+    @ApiStatus.Internal
     public ParticleType<?, ?> particle;
 
+    @ApiStatus.Internal
     public float offsetX;
+    @ApiStatus.Internal
     public float offsetY;
+    @ApiStatus.Internal
     public float offsetZ;
+    @ApiStatus.Internal
     public int count;
+    @ApiStatus.Internal
     public float speed;
+    @ApiStatus.Internal
     public boolean longDistance;
-
+    @ApiStatus.Internal
     public Object data;
 
-    public BiConsumer<Player, Location> compiledSender;
+    @ApiStatus.Internal
+    public CompiledParticle compiledSender;
 
     public SimpleCompiledParticle(MultiParticle<?> multiParticle) {
         this.particle = multiParticle.getType();
@@ -44,12 +50,17 @@ public class SimpleCompiledParticle implements CompiledParticle {
 
     @Override
     public void send(Player player, Location location) {
-        this.compiledSender.accept(player, location);
+        this.compiledSender.send(player, location);
+    }
+
+    @Override
+    public void sendToTrackingPlayers(org.bukkit.Location location) {
+        this.compiledSender.sendToTrackingPlayers(location);
     }
 
     public CompiledParticle compileSender() {
         ParticleChannel channel = ParticleHelper.getActiveParticleChannel();
-        this.compiledSender = channel.getSender(this);
+        this.compiledSender = channel.getSingleSender(this);
         return this;
     }
 }

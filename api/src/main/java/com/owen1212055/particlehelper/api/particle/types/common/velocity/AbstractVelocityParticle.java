@@ -8,14 +8,14 @@ import com.owen1212055.particlehelper.api.particle.types.velocity.VelocityPartic
 import com.owen1212055.particlehelper.api.type.ParticleType;
 import org.jetbrains.annotations.NotNull;
 
-public class VelocityParticleImpl<T extends Particle<T>> extends AbstractSingleParticle<T> implements VelocityParticle<T> {
+public abstract class AbstractVelocityParticle<T extends Particle<T>> extends AbstractSingleParticle<T> implements VelocityParticle<T> {
 
     protected float xVelocity;
     protected float yVelocity;
     protected float zVelocity;
     protected float speed;
 
-    public VelocityParticleImpl(ParticleType<?, ?> particleType) {
+    public AbstractVelocityParticle(ParticleType<?, ?> particleType) {
         super(particleType);
     }
 

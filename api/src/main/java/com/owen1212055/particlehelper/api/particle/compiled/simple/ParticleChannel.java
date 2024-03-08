@@ -1,11 +1,7 @@
 package com.owen1212055.particlehelper.api.particle.compiled.simple;
 
 import com.owen1212055.particlehelper.api.particle.compiled.CompiledParticle;
-import org.bukkit.Location;
-import org.bukkit.entity.Player;
 import org.jetbrains.annotations.ApiStatus;
-
-import java.util.function.BiConsumer;
 
 /**
  * Internally used for sending simple compiled particles without using
@@ -14,7 +10,7 @@ import java.util.function.BiConsumer;
 @ApiStatus.Internal
 public interface ParticleChannel {
 
-    BiConsumer<Player, Location> getSender(SimpleCompiledParticle particle);
+    CompiledParticle getSingleSender(SimpleCompiledParticle particle);
 
     CompiledParticle getGroupedSender(CompiledParticle... particles);
 

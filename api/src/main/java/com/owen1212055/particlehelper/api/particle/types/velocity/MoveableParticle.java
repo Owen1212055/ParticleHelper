@@ -1,16 +1,17 @@
-package com.owen1212055.particlehelper.api.type;
+package com.owen1212055.particlehelper.api.particle.types.velocity;
 
 import com.owen1212055.particlehelper.api.particle.types.common.velocity.MultiSpeedModifiableParticle;
-import com.owen1212055.particlehelper.api.particle.types.velocity.VelocityParticle;
+import com.owen1212055.particlehelper.api.particle.types.common.velocity.AbstractVelocityParticle;
+import com.owen1212055.particlehelper.api.type.ParticleType;
 import org.bukkit.NamespacedKey;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.function.Function;
 
-public interface MoveableParticle extends ParticleType<VelocityParticle<?>, MultiSpeedModifiableParticle> {
+public interface MoveableParticle extends ParticleType<SimpleVelocityParticle, MultiSpeedModifiableParticle> {
 
     record ApiParticle(NamespacedKey key,
-                       Function<ApiParticle, VelocityParticle<?>> singleBuilder,
+                       Function<ApiParticle, SimpleVelocityParticle> singleBuilder,
                        Function<ApiParticle, MultiSpeedModifiableParticle> multibuilder) implements MoveableParticle {
 
         @Override
@@ -19,7 +20,7 @@ public interface MoveableParticle extends ParticleType<VelocityParticle<?>, Mult
         }
 
         @Override
-        public @NotNull VelocityParticle<?> single() {
+        public @NotNull SimpleVelocityParticle single() {
             return this.singleBuilder.apply(this);
         }
 

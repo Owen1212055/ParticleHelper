@@ -12,7 +12,7 @@ repositories {
 }
 
 dependencies {
-    compileOnly("io.papermc.paper:paper-api:1.19.2-R0.1-SNAPSHOT")
+    compileOnly("io.papermc.paper:paper-api:1.20.3-R0.1-SNAPSHOT")
     implementation(project(":nms", configuration = "reobf"))
 }
 
@@ -29,7 +29,7 @@ tasks {
     }
 
     runServer {
-        minecraftVersion("1.19.4")
+        minecraftVersion("1.20.4")
     }
 
 }
